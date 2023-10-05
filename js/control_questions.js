@@ -1,89 +1,30 @@
+// По-умолчанию позагрузка элементов разрешена
 let isLoading = true
 
-function printQuestion(question) {
-    if (question.type == "radio") {
-        return printRadioQuestion(question)
-    } else if (question.type == "checkbox") {
-        return printCheckboxQuestion(question)
-    }
-}
-
-function printRadioQuestion(question) {
-    let html = ''
-    html += '<form class="control-questions_item" test-form-elem="form">'
-    html +=     '<div class="test_form_question_wrapper">'
-    html +=         `<div class="test_form_question_number">${question.number}</div>`
-    html +=         `<div class="test_form_question">${question.question}</div>`
-    html +=     '</div>'
-                for(let answer in question.answers){
-                    html += '<label class="test_form_label test_form_radio_wrapper">'
-                    html +=     `<input class="test_form_radio" type="radio" name="answer${question.number}" value="${parseInt(answer) + 1}">`
-                    html +=     '<div class="test_form_custom_radio"></div>'
-                    html +=     `<div class="test_form_answer">${question.answers[answer]}</div>`
-                    html += '</label>'
-                }
-    html +=     '<div class="control-questions_item_prompt_wrapper" test-form-elem="prompt-wrapper">'
-    html +=         '<a class="control-questions_item_prompt_open" test-form-elem="prompt-open">подсказка</a>'
-    html +=         '<div class="control-questions_item_prompt" test-form-elem="prompt">'
-    html +=             '<span>Подсказка: </span>'
-    html +=             question.prompt
-    html +=         '</div>'
-    html +=     '</div>'
-    html +=     '<div class="control-questions_item_buttons_wrapper">'
-    html +=         '<button type="button" class="white-blue_button control-questions_item_button">Ответить</button>'
-    html +=         '<div class="control-questions_item_result"></div>'
-    html +=     '</div>'
-    html += '</form>'
-
-    return html
-}
-
-function printCheckboxQuestion(question) {
-    let html = ''
-    html += '<form class="control-questions_item" test-form-elem="form">'
-    html +=     '<div class="test_form_question_wrapper">'
-    html +=         `<div class="test_form_question_number">${question.number}</div>`
-    html +=         `<div class="test_form_question">${question.question}</div>`
-    html +=     '</div>'
-                for(let answer in question.answers){
-                    html += '<label class="test_form_label test_form_checkbox_wrapper">'
-                    html +=     `<input class="test_form_checkbox" type="checkbox" name="answer${question.number}" value="${parseInt(answer) + 1}">`
-                    html +=     '<div class="test_form_custom_checkbox"></div>'
-                    html +=     `<div class="test_form_answer">${question.answers[answer]}</div>`
-                    html += '</label>'
-                }
-    html +=     '<div class="control-questions_item_prompt_wrapper" test-form-elem="prompt-wrapper">'
-    html +=         '<a class="control-questions_item_prompt_open" test-form-elem="prompt-open">подсказка</a>'
-    html +=         '<div class="control-questions_item_prompt" test-form-elem="prompt">'
-    html +=             '<span>Подсказка: </span>'
-    html +=             question.prompt
-    html +=         '</div>'
-    html +=     '</div>'
-    html +=     '<div class="control-questions_item_buttons_wrapper">'
-    html +=          '<button type="button" class="white-blue_button control-questions_item_button">Ответить</button>'
-    html +=          '<div class="control-questions_item_result"></div>'
-    html +=     '</div>'
-    html += '</form>'
-
-    return html
-}
-
 function loadControlQuestions(wrapper, trigger) {
+    // Если подзагрузка разрешена, то делаем запрос на следующую страницу
     if (isLoading) {
+        // активируем анимацию загрузки
         trigger.classList.add('loading')
+        // Ищем контейнер с вопросами
         let inner = wrapper.querySelector('[control-questions-elem="inner"]')
-        let errorElement = wrapper.querySelector('[control-questions-elem="errors"]')
-        let currentPage = parseInt(wrapper.getAttribute('page'))
-        let currentPerPage = parseInt(wrapper.getAttribute('per-page'))
+        // Парсим номер страницы, которую надо загрузить с элемента загрузки
+        let page = parseInt(trigger.getAttribute('data-page'))
+        // Парсим количество вопросов на странице с элемента загрузки
+        let perPage = parseInt(trigger.getAttribute('data-per-page'))
+        // Парсим endpoint запроса с элемента загрузки
+        let url = trigger.getAttribute('data-url')
+        // Запрещаем подзагрузку новых страниц до выполнения запроса
         isLoading = false
-        errorElement.innerHTML = ''
 
+        // Формируем тело запроса
         let body = {
-            'page': currentPage,
-            'per_page': currentPerPage
+            'page': page,
+            'per_page': perPage
         }
 
-        fetch('http://tst/request.php', {
+        // Делаем AJAX-запрос на endpoint
+        fetch(url, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -92,25 +33,20 @@ function loadControlQuestions(wrapper, trigger) {
         })
             .then(response => response.json())
             .then((data) => {
+                // Если запрос имеет статус "success"
                 if(data.status == 'success') {
-                    let htmlQuestion = ''
-                    for (let question in data.questions) {
-                        htmlQuestion += printQuestion(data.questions[question])
-                    }
-
+                    // Убираем анимацию загрузки
                     trigger.classList.remove('loading')
-                    inner.insertAdjacentHTML("beforeend", htmlQuestion)
-                    wrapper.setAttribute('page', data.page)
-                    wrapper.setAttribute('per-page', data.per_page)
+                    // Вставляем новые вопросы в конец контейнера с вопросами
+                    inner.insertAdjacentHTML("beforeend", data.content)
+                    // Меняем значения data-аттрибутов для следующих запросов
+                    trigger.setAttribute('data-page', data.page)
+                    trigger.setAttribute('data-per-page', data.per_page)
 
-                    if (data.total > data.page * data.per_page) {
+                    // Если общее количество вопросов больше чем уже загружено, то разрешаем подзагрузку
+                    if (data.total > page * perPage) {
                         isLoading = true
                     }
-                }
-
-                if(data.status == 'error') {
-                    trigger.classList.remove('loading')
-                    errorElement.innerHTML = data.message
                 }
             });
     }
@@ -128,8 +64,6 @@ if (controlQuestionsWrapper) {
 
             let controlQuestionsAjaxTriggerBox = controlQuestionsAjaxTrigger.getBoundingClientRect()
             let controlQuestionsAjaxTriggerPosition = controlQuestionsAjaxTriggerBox.top + window.pageYOffset
-
-            let controlQuestionsInner = controlQuestionsWrapper.querySelector('[control-questions-elem="inner"]')
 
             if (bottomScroll > controlQuestionsAjaxTriggerPosition) {
                 loadControlQuestions(controlQuestionsWrapper, controlQuestionsAjaxTrigger)
