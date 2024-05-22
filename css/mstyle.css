@@ -101,6 +101,10 @@
     .history_table_content .history_table_row .header.hidden {
         display: none;
     }
+
+    .arrow_links {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 992px) {
@@ -189,7 +193,7 @@
         overflow: hidden;
     }
 
-        .demo-link_wrapper {
+    .demo-link_wrapper {
         position: relative;
         text-align: center;
         width: 100%;
@@ -238,8 +242,10 @@
         border-right: 2px solid #20478a;
         border-bottom: 2px solid transparent;
         border-radius: 50%;
+        -webkit-animation: 1.5s linear 1s infinite loader;
         animation: 1.5s linear 1s infinite loader;
     }
+
     .history_mobile_ajax {
         display: block;
     }
@@ -261,6 +267,7 @@
         border-right: 2px solid #20478a;
         border-bottom: 2px solid transparent;
         border-radius: 50%;
+        -webkit-animation: 1.5s linear 1s infinite loader;
         animation: 1.5s linear 1s infinite loader;
     }
 
@@ -268,8 +275,19 @@
         color: red;
         text-align: center;
     }
+
     .history_display {
         display: none;
+    }
+
+    @-webkit-keyframes loader {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
     }
 
     @keyframes loader {
@@ -423,4 +441,3 @@
         padding: 20px;
     }
 }
-
