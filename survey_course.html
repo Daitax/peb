@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/mstyle.css">
-    <title>Экспресс-тест</title>
+    <title>Опрос по курсу</title>
 </head>
 <body>
     <div class="global-wrapper">
@@ -46,10 +46,12 @@
                 <div class="left-menu">
                     <div class="main-menu_mobile_button" menu-elem="mobile-open">Меню</div>
                     <nav class="main-menu" menu-elem="main-menu">
+                        <!--На активный пункт добавляем active-->
                         <li class="main-menu_item active" menu-elem="main-menu-item">
                             <a href="my_programs.html" class="main-menu_item_header" menu-elem="main-header">Мои программы</a>
                             <ul class="programs-menu" menu-elem="programs-menu">
-                                <li class="programs-menu_item" menu-elem="programs-menu-item">
+                                <!--На активный пункт добавляем active-->
+                                <li class="programs-menu_item active" menu-elem="programs-menu-item">
                                     <a href="first_aid.html" class="programs-menu_item_header" menu-elem="program-header">Оказание первой помощи пострадавшим</a>
                                     <ul class="modules-menu" menu-elem="modules-menu">
                                         <li class="modules-menu_item">
@@ -96,7 +98,7 @@
                                             </div>
                                         </li>
                                         <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">
+                                            <div class="modules-menu_item_header active">
                                                 <a href="survey_course.html">Опрос по курсу</a>
                                             </div>
                                         </li>
@@ -155,8 +157,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <!--На активный пункт добавляем active-->
-                                <li class="programs-menu_item active" menu-elem="programs-menu-item">
+                                <li class="programs-menu_item" menu-elem="programs-menu-item">
                                     <a href="gas_oil.html" class="programs-menu_item_header" menu-elem="program-header">Б2. Нефтяная и газовая промышленность</a>
                                     <ul class="modules-menu" menu-elem="modules-menu">
                                         <li class="modules-menu_item">
@@ -170,8 +171,7 @@
                                             </div>
                                         </li>
                                         <li class="modules-menu_item">
-                                            <!--На активный пункт добавляем active-->
-                                            <div class="modules-menu_item_header active">
+                                            <div class="modules-menu_item_header">
                                                 <a href="express_test.html">Итоговое тестирование</a>
                                             </div>
                                         </li>
@@ -196,65 +196,105 @@
                     </nav>
                 </div>
                 <div class="content">
-                    <div class="express-test">
-                        <div class="express-test_header">
-                            <h1>Итоговое тестирование</h1>
-                            <!--в end-time передаём timestamp в формате php (в секундах)-->
-                            <div class="express-test_header_timer" test-elem="timer" end-time="1672297200">
-                                <div class="express-test_header_timer_minutes" test-elem="minutes">00</div>
-                                <div class="express-test_header_timer_seconds" test-elem="seconds">00</div>
-                            </div>
+                    <div class="survey-test">
+                        <div class="survey-test_header">
+                            <h1>Опрос по курсу</h1>
                         </div>
-                        <div class="express-test_description">
-                            <strong>Тема:</strong> Эксплуатация опасных производственных объектов, на которых используются трубопроводы пара и горячей воды.
+                        <div class="survey-test_description">
+                            Ваши отзывы помогают нам меняться. Спасибо!<br/>
+                            Просим Вас оценить курс и удобство пользования нашей платформой. Благодарим за честность ❤
                         </div>
-                        <form class="test_form express-test_form" test-form-elem="form">
+                        <form class="test-form survey-test-form" test-form-elem="form">
+                            <!--1 вопрос-->
                             <div class="test_form_question_wrapper">
                                 <div class="test_form_question_number">
                                     1.
                                 </div>
                                 <div class="test_form_question">
-                                    Какое из приведенных испытаний не является обязательным видом механических испытаний котлов (трубопроводов)?
+                                    Курс полезен для Вас?
                                 </div>
                             </div>
-                            <!--Заполнить name и value-->
-                            <!--Радиокнопки-->
                             <label class="test_form_label test_form_radio_wrapper">
-                                <input class="test_form_radio" type="radio" name="answer1" value="1">
+                                <input class="test_form_radio" type="radio" name="Курс полезен для Вас?" value="Да">
                                 <div class="test_form_custom_radio"></div>
-                                <div class="test_form_answer">Испытание на статическое растяжение</div>
+                                <div class="test_form_answer">Да</div>
                             </label>
                             <label class="test_form_label test_form_radio_wrapper">
-                                <input class="test_form_radio" type="radio" name="answer1" value="2">
+                                <input class="test_form_radio" type="radio" name="Курс полезен для Вас?" value="Нет">
                                 <div class="test_form_custom_radio"></div>
-                                <div class="test_form_answer">Испытание на статический изгиб</div>
+                                <div class="test_form_answer">Нет</div>
                             </label>
                             <label class="test_form_label test_form_radio_wrapper">
-                                <input class="test_form_radio" type="radio" name="answer1" value="3">
+                                <input class="test_form_radio" type="radio" name="Курс полезен для Вас?" value="Затрудняюсь ответить">
                                 <div class="test_form_custom_radio"></div>
-                                <div class="test_form_answer">Испытание на ударный изгиб</div>
+                                <div class="test_form_answer">Затрудняюсь ответить</div>
                             </label>
-                            <!--Чекбоксы-->
-                        <!--<label class="test_form_label test_form_checkbox_wrapper">
-                                <input class="test_form_checkbox" type="checkbox" name="answer1" value="1">
-                                <div class="test_form_custom_checkbox"></div>
-                                <div class="test_form_answer">Испытание на статическое растяжение</div>
-                            </label>
-                            <label class="test_form_label test_form_checkbox_wrapper">
-                                <input class="test_form_checkbox" type="checkbox" name="answer1" value="1">
-                                <div class="test_form_custom_checkbox"></div>
-                                <div class="test_form_answer">Испытание на статическое растяжение</div>
-                            </label>
-                            <label class="test_form_label test_form_checkbox_wrapper">
-                                <input class="test_form_checkbox" type="checkbox" name="answer1" value="1">
-                                <div class="test_form_custom_checkbox"></div>
-                                <div class="test_form_answer">Испытание на статическое растяжение</div>
-                            </label>-->
-                            <div class="express-test_form_error"><!--тут выводим ошибки--></div>
-                            <div class="express-test_form_buttons_wrapper">
-                                <button type="button" class="blue_button express-test_form_button_next">Следующий вопрос</button>
-                                <a href="result.html" class="white-blue_button express-test_form_button_end">Завершить</a>
+
+                            <!--2 вопрос-->
+                            <div class="test_form_question_wrapper">
+                                <div class="test_form_question_number">
+                                    2.
+                                </div>
+                                <div class="test_form_question">
+                                    Насколько материал курса соответствует вашим ожиданиям? Что бы вы предложили
+                                    изменить/улучшить?
+                                </div>
                             </div>
+                            <textarea class="test_form_textarea"
+                                      name="Насколько материал курса соответствует вашим ожиданиям? Что
+                                        бы вы предложили изменить/улучшить?"
+                                      rows="5"></textarea>
+
+                            <!--3 вопрос-->
+                            <div class="test_form_question_wrapper">
+                                <div class="test_form_question_number">
+                                    3.
+                                </div>
+                                <div class="test_form_question">
+                                     Вам удобно и понятно пользоваться обучающей платформой?
+                                </div>
+                            </div>
+                            <label class="test_form_label test_form_radio_wrapper">
+                                <input class="test_form_radio"
+                                       type="radio"
+                                       name="Вам удобно и понятно пользоваться обучающей платформой?"
+                                       value="Да">
+                                <div class="test_form_custom_radio"></div>
+                                <div class="test_form_answer">Да</div>
+                            </label>
+                            <label class="test_form_label test_form_radio_wrapper">
+                                <input class="test_form_radio"
+                                       type="radio"
+                                       name="Вам удобно и понятно пользоваться обучающей платформой?"
+                                       value="Нет">
+                                <div class="test_form_custom_radio"></div>
+                                <div class="test_form_answer">Нет</div>
+                            </label>
+                            <label class="test_form_label test_form_radio_wrapper">
+                                <input class="test_form_radio"
+                                       type="radio"
+                                       name="Вам удобно и понятно пользоваться обучающей платформой?"
+                                       value="Затрудняюсь ответить">
+                                <div class="test_form_custom_radio"></div>
+                                <div class="test_form_answer">Затрудняюсь ответить</div>
+                            </label>
+
+                            <!--4 вопрос-->
+                            <div class="test_form_question_wrapper">
+                                <div class="test_form_question_number">
+                                    4.
+                                </div>
+                                <div class="test_form_question">
+                                    Ваши пожелания и предложения по обучающей платформе. Что нам изменить/улучшить
+                                    в платформе?
+                                </div>
+                            </div>
+                            <textarea class="test_form_textarea"
+                                      name="Ваши пожелания и предложения по обучающей платформе.
+                                        Что нам изменить/улучшить в платформе? "
+                                      rows="5"></textarea>
+                            <button type="button" class="white-blue_button survey-test_button" survey-form-elem="submit">Отправить</button>
+                            <div class="survey-test_form_error"><!--тут выводим ошибки--></div>
                         </form>
                     </div>
                 </div>
@@ -264,16 +304,23 @@
             <div class="footer-content container">
                 <div class="copyright">
                     <!--Выводим текущий год-->
-                    2022, Группа компаний <a href="https://safety63.ru">Промэнергобезопасность</a> 
+                    2022, Группа компаний <a href="https://safety63.ru">Промэнергобезопасность</a>
                 </div>
                 <div class="support">Служба поддержки: <a href="tel:+78462691526">+7 (846) 26-915-26</a> (с 8:00 до 22:00 без перерывов и выходных)</div>
             </div>
         </footer>
         <div class="overlay" popup-element="overlay">
-
+            <div class="popup" popup-element="popup">
+                <div class="survey-success_header">Ваш ответ получен. Спасибо ❤</div>
+                <div class="survey-success_description">Обучаться по курсу, проходить все задания и тесты повторно можно
+                    неограниченное количество раз, пока не закончится срок действия курса. </div>
+                <div class="survey-success_change">Вы можете <a href="survey_course.html">изменить</a> свои ответы</div>
+                <div class="popup_close_wrapper">
+                    <a class="popup_close" popup-element="popup-close">закрыть</a>
+                </div>
+            </div>
         </div>
     </div>
     <script src="js/scripts.js"></script>
-    <script src="js/timer.js"></script>
 </body>
 </html>

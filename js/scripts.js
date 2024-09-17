@@ -255,6 +255,36 @@ if (finalTestingLink) {
   }
 }
 
+let faqItems = document.querySelectorAll('[faq-elem="item"]')
+
+if (faqItems.length > 0) {
+  faqItems.forEach((element) => {
+    let question = element.querySelector('[faq-elem="question"]')
+
+    question.addEventListener('click', function (event) {
+      let item = this.closest('[faq-elem="item"]')
+      let wrapper = this.closest('[faq-elem="wrapper"]')
+      let thisAnswer = item.querySelector('[faq-elem="answer"]')
+
+      let allItems = wrapper.querySelectorAll('[faq-elem="item"]')
+
+      allItems.forEach(function (elem) {
+        let answer = elem.querySelector('[faq-elem="answer"]')
+        answer.style.maxHeight = 0 + 'px'
+      })
+
+      thisAnswer.style.maxHeight = thisAnswer.scrollHeight + "px"
+    })
+  })
+}
+
+let surveySubmitButton = document.querySelector('[survey-form-elem="submit"]')
+
+if (surveySubmitButton) {
+  // Необходимо сделать отправку ответов тест и открытие попапа
+  surveySubmitButton.addEventListener('click', openPopup)
+}
+
 const passwordInput = document.querySelector(".password_input");
 
 if (passwordInput) {
