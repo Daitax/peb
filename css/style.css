@@ -1172,6 +1172,15 @@ img {
   font-weight: bold;
 }
 
+.results_protocols_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.results_protocols_item {
+  margin-bottom: 15px;
+}
+
 .results_table {
   font-size: 14px;
   background: linear-gradient(to right, #029ee0 0%, #205789 100%);
