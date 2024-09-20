@@ -240,7 +240,8 @@
                                     изменить/улучшить?
                                 </div>
                             </div>
-                            <textarea class="test_form_textarea"
+                            <textarea id="usability"
+                                      class="test_form_textarea"
                                       name="Насколько материал курса соответствует вашим ожиданиям? Что
                                         бы вы предложили изменить/улучшить?"
                                       rows="5"></textarea>
@@ -289,12 +290,15 @@
                                     в платформе?
                                 </div>
                             </div>
-                            <textarea class="test_form_textarea"
+                            <textarea id="wish"
+                                      class="test_form_textarea"
                                       name="Ваши пожелания и предложения по обучающей платформе.
                                         Что нам изменить/улучшить в платформе? "
                                       rows="5"></textarea>
                             <button type="button" class="white-blue_button survey-test_button" survey-form-elem="submit">Отправить</button>
-                            <div class="survey-test_form_error"><!--тут выводим ошибки--></div>
+                            <div class="survey-test_form_error" survey-form-elem="error">
+                                <!--тут выводим ошибки-->
+                            </div>
                         </form>
                     </div>
                 </div>

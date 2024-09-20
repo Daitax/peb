@@ -281,8 +281,44 @@ if (faqItems.length > 0) {
 let surveySubmitButton = document.querySelector('[survey-form-elem="submit"]')
 
 if (surveySubmitButton) {
-  // Необходимо сделать отправку ответов тест и открытие попапа
-  surveySubmitButton.addEventListener('click', openPopup)
+  surveySubmitButton.addEventListener('click', function (event) {
+    let form = this.closest('form')
+    let errorField = form.querySelector('[survey-form-elem="error"]')
+    let isError = true
+    let radioCourseWasUseful = ""
+    let radioUsability = ""
+
+    let formRadioCourseWasUseful = form.querySelectorAll('input[type="radio"][name="Курс полезен для Вас?"]')
+    let formRadioUsability = form.querySelectorAll('input[type="radio"][name="Вам удобно и понятно пользоваться обучающей платформой?"]')
+    let formTextareaMaterial = form.querySelector('textarea#usability')
+    let formTextareaWish = form.querySelector('textarea#wish')
+
+    formRadioCourseWasUseful.forEach(function (elem) {
+      if (elem.checked) {
+        radioCourseWasUseful = elem.value
+      }
+    })
+
+    formRadioUsability.forEach(function (elem) {
+      if (elem.checked) {
+        radioUsability = elem.value
+      }
+    })
+
+    if (radioCourseWasUseful != "" &&
+      radioUsability != "" &&
+      formTextareaMaterial.value != "" &&
+      formTextareaWish.value != "") {
+      isError = false
+    }
+
+    if (isError){
+      errorField.innerText = "Пожалуйста, ответьте на все вопросы. Нам будет приятно"
+    } else {
+      errorField.innerText = ""
+      openPopup()
+    }
+  })
 }
 
 const passwordInput = document.querySelector(".password_input");
