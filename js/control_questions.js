@@ -20,7 +20,9 @@ function loadControlQuestions(wrapper, trigger) {
         // Формируем тело запроса
         let body = {
             'page': page,
-            'per_page': perPage
+            'per_page': perPage,
+            'permission_id': parseInt(trigger.getAttribute('data-permission-id')),
+            'theme_id': parseInt(trigger.getAttribute('data-theme-id'))
         }
 
         // Делаем AJAX-запрос на endpoint
@@ -48,7 +50,8 @@ function loadControlQuestions(wrapper, trigger) {
                         isLoading = true
                     }
                 }
-            });
+            })
+            .catch(error => location.replace('/'))
     }
 }
 

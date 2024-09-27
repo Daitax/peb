@@ -266,14 +266,21 @@ if (faqItems.length > 0) {
       let wrapper = this.closest('[faq-elem="wrapper"]')
       let thisAnswer = item.querySelector('[faq-elem="answer"]')
 
-      let allItems = wrapper.querySelectorAll('[faq-elem="item"]')
+      if (item.classList.contains('active')) {
+        thisAnswer.style.maxHeight = 0 + 'px'
+        item.classList.remove('active')
+      } else {
+        let allItems = wrapper.querySelectorAll('[faq-elem="item"]')
 
-      allItems.forEach(function (elem) {
-        let answer = elem.querySelector('[faq-elem="answer"]')
-        answer.style.maxHeight = 0 + 'px'
-      })
+        allItems.forEach(function (elem) {
+          let answer = elem.querySelector('[faq-elem="answer"]')
+          answer.style.maxHeight = 0 + 'px'
+          elem.classList.remove('active')
+        })
 
-      thisAnswer.style.maxHeight = thisAnswer.scrollHeight + "px"
+        thisAnswer.style.maxHeight = thisAnswer.scrollHeight + "px"
+        item.classList.add('active')
+      }
     })
   })
 }
@@ -288,8 +295,8 @@ if (surveySubmitButton) {
     let radioCourseWasUseful = ""
     let radioUsability = ""
 
-    let formRadioCourseWasUseful = form.querySelectorAll('input[type="radio"][name="Курс полезен для Вас?"]')
-    let formRadioUsability = form.querySelectorAll('input[type="radio"][name="Вам удобно и понятно пользоваться обучающей платформой?"]')
+    let formRadioCourseWasUseful = form.querySelectorAll('input[type="radio"][name="question1"]')
+    let formRadioUsability = form.querySelectorAll('input[type="radio"][name="question3"]')
     let formTextareaMaterial = form.querySelector('textarea#usability')
     let formTextareaWish = form.querySelector('textarea#wish')
 
@@ -316,7 +323,13 @@ if (surveySubmitButton) {
       errorField.innerText = "Пожалуйста, ответьте на все вопросы. Нам будет приятно"
     } else {
       errorField.innerText = ""
-      openPopup()
+      let surveySaveUrl =  document.querySelector('[survey-form-elem="submit"]').getAttribute('survey-save-url')
+      fetch(surveySaveUrl, {
+        method: 'POST',
+        body: new FormData(form),
+      })
+      .then(res => res.ok ? openPopup() : Promise.reject(res))
+      .catch(() => alert('Ошибка отправки сообщения'));
     }
   })
 }

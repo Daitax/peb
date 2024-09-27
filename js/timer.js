@@ -1,9 +1,10 @@
 let timer = document.querySelector('[test-elem="timer"]')
 
 if (timer) {
+  let backTimerUrl = timer.getAttribute('back-timer-url')
+
   function getServerTimestamp() {
-    // Тут необходимо вписать адрес к файлу что возвращает время сервера
-    return fetch('../php/current_time.php')
+    return fetch(backTimerUrl)
       .then(response => response.text())
       .then(timestamp => {
         timer.setAttribute('cur-time', timestamp)
@@ -17,6 +18,8 @@ if (timer) {
     let diff = endDate - currentDate;
     if (diff <= 0) {
       clearInterval(timerId);
+
+      document.dispatchEvent(new Event('ticketTimeout'))
     }
 
     printCountdown(diff)
