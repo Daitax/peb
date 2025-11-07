@@ -198,6 +198,18 @@
                 <div class="content">
                     <div class="control-questions" control-questions-elem="wrapper">
                         <h1>Подготовка к аттестации</h1>
+                        <div class="control-questions_history_buttons_wrapper">
+                                <button type="button" 
+                                        class="control-questions_history_button" 
+                                        element-action="open-popup-save-history">
+                                    Хранить историю
+                                </button>
+                                <button type="button" 
+                                        class="control-questions_history_button" 
+                                        element-action="open-popup-clear-history">
+                                    Очистить историю
+                                </button>
+                            </div>
                         <div class="control-questions_display">
                             <div class="control-questions_display_count_wrapper">
                                 <div class="control-questions_display_count_header">отображать по: </div>
@@ -418,6 +430,35 @@
             </div>
         </footer>
         <div class="overlay" popup-element="overlay">
+            <!--Попап с подтверждением хранения истории-->
+            <div class="popup" popup-element="popup" popup-type="save-history">
+                <div class="survey-success_header">Хранение истории ответов</div>
+                <div class="survey-success_description">При нажатии на кнопку вы активируете сохранение истории ваших 
+                    ответов. Ваши ответы и результаты будут сохранятся в системе.<br/>
+                    В любой момент вы сможете очистить историю сохраненных ответов.<br/>
+                    Сохранять историю ответов?
+                </div>
+                <div class="popup_options_wrapper">
+                    <!--Здесь необходимо реализовать действия для сохранения истории-->
+                    <a class="popup_close">Сохранять</a>
+                </div>
+                <div class="popup_options_wrapper">
+                    <a class="popup_close" popup-element="popup-close">Не сохранять</a>
+                </div>
+            </div>
+            <!--Попап с подтверждением очистки истории-->
+            <div class="popup" popup-element="popup" popup-type="clear-history">
+                <div class="survey-success_header">Очистка истории ответов</div>
+                <div class="survey-success_description">При нажатии на кнопку ваши ответы и результаты очистятся в 
+                    истории. Очистить историю ответов?</div>
+                <div class="popup_options_wrapper">
+                    <!--Здесь необходимо реализовать действия для очистки истории-->
+                    <a class="popup_close">Да, очистить</a>
+                </div>
+                <div class="popup_options_wrapper">
+                    <a class="popup_close" popup-element="popup-close">Нет, оставить</a>
+                </div>
+            </div>
         </div>
     </div>
     <script src="js/scripts.js"></script>

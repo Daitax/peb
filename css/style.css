@@ -1028,6 +1028,26 @@ img {
   line-height: 1;
 }
 
+.control-questions_history_buttons_wrapper {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.control-questions_history_button {
+  font-size: 14px;
+  color: #fff;
+  background: #e05457;
+  border: 2px solid #e05457;
+  border-radius: 5px;
+  padding: 10px 30px;
+  cursor: pointer;
+}
+
+.control-questions_history_button:hover {
+  opacity: 0.8;
+}
+
 .control-questions_display_separator {
   margin-left: 4px;
   margin-right: 4px;
@@ -1664,6 +1684,12 @@ img {
 .popup ol {
   list-style-position: inside;
   margin-left: 10px;
+}
+
+.popup_options_wrapper {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .popup_close_wrapper {
