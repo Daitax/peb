@@ -256,10 +256,18 @@
                                         Подсказка на вопрос
                                     </div>
                                 </div>
+                                <!--Обратить внимание: вёрстка немного изменена при добавлении пункта "добавить в избранное"-->
                                 <div class="control-questions_item_buttons_wrapper">
-                                    <button type="button" class="white-blue_button control-questions_item_button">Ответить</button>
-                                    <!--Результат ответа-->
-                                    <div class="control-questions_item_result right">Правильно</div>
+                                    <div class="control-questions_item_buttons_answer_wrapper">
+                                        <button type="button" class="white-blue_button control-questions_item_button">Ответить</button>
+                                        <!--Результат ответа-->
+                                        <div class="control-questions_item_result right">Правильно</div>
+                                    </div>
+                                    <!--Пункт "добавить в избранное"-->
+                                    <a class="control-questions_item_add-favorites">
+                                        <img src="images/add-favorites.svg" alt="">
+                                        <div>Добавить в избранное</div>
+                                    </a>
                                 </div>
                             </form>
                             <form class="control-questions_item" test-form-elem="form">
@@ -299,9 +307,16 @@
                                     </div>
                                 </div>
                                 <div class="control-questions_item_buttons_wrapper">
-                                    <button type="button" class="white-blue_button control-questions_item_button">Ответить</button>
-                                    <!--Результат ответа-->
-                                    <div class="control-questions_item_result wrong">Не правильно</div>
+                                    <div class="control-questions_item_buttons_answer_wrapper">
+                                        <button type="button" class="white-blue_button control-questions_item_button">Ответить</button>
+                                        <!--Результат ответа-->
+                                        <div class="control-questions_item_result wrong">Не правильно</div>
+                                    </div>
+                                    <!--Пункт "удалить из избранного"-->
+                                    <a class="control-questions_item_add-favorites">
+                                        <img src="images/added-favorites.svg" alt="">
+                                        <div>Удалить из избранного</div>
+                                    </a>
                                 </div>
                             </form>
                             <form class="control-questions_item" test-form-elem="form">
@@ -336,9 +351,16 @@
                                     </div>
                                 </div>
                                 <div class="control-questions_item_buttons_wrapper">
-                                    <button type="button" class="white-blue_button control-questions_item_button">Ответить</button>
-                                    <!--Результат ответа-->
-                                    <div class="control-questions_item_result"></div>
+                                    <div class="control-questions_item_buttons_answer_wrapper">
+                                        <button type="button" class="white-blue_button control-questions_item_button">Ответить</button>
+                                        <!--Результат ответа-->
+                                        <div class="control-questions_item_result"></div>
+                                    </div>
+                                    <!--Пункт "добавить в избранное"-->
+                                    <a class="control-questions_item_add-favorites">
+                                        <img src="images/add-favorites.svg" alt="">
+                                        <div>Добавить в избранное</div>
+                                    </a>
                                 </div>
                             </form>
                             <!-- Вставка новых вопросов будет здесь -->

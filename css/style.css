@@ -811,6 +811,13 @@ img {
   margin-bottom: 3px;
 }
 
+.modules_item_favorites img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  margin-right: 15px;
+}
+
 /* /program */
 
 /* module */
@@ -1063,7 +1070,7 @@ img {
 }
 
 .control-questions_item {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .control-questions_item_prompt_wrapper {
@@ -1096,8 +1103,14 @@ img {
 .control-questions_item_buttons_wrapper {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-top: 20px;
   margin-left: 40px;
+}
+
+.control-questions_item_buttons_answer_wrapper {
+  display: flex;
+  align-items: center;
 }
 
 .control-questions_item_button {
@@ -1117,6 +1130,23 @@ img {
 
 .control-questions_item_result.wrong {
   color: #e05457;
+}
+
+.control-questions_item_add-favorites {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.control-questions_item_add-favorites img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+.control-questions_item_add-favorites div {
+  color: #20478a;
+  margin-left: 5px;
 }
 
 /* /control questions */
