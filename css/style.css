@@ -958,7 +958,7 @@ img {
 
 .express-test_popup_description {
   font-size: 18px;
-  text-align: center;
+  text-align: left;
   margin-bottom: 20px;
 }
 
@@ -1702,7 +1702,7 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  max-width: 640px;
+  max-width: 655px;
   width: 90%;
   background: #fff;
   padding: 45px 60px;
