@@ -1,12 +1,12 @@
 function openPopup(otherSelector = false) {
   let overlay = document.querySelector('[popup-element="overlay"]');
-  let popup = ""
-  if(otherSelector){
-    popup = document.querySelector(`[popup-element="popup"]${otherSelector}`)
+  let popup = "";
+  if (otherSelector) {
+    popup = document.querySelector(`[popup-element="popup"]${otherSelector}`);
   } else {
     popup = document.querySelector('[popup-element="popup"]');
   }
-  
+
   overlay.classList.add("show");
   setTimeout(function () {
     popup.classList.add("show");
@@ -17,28 +17,29 @@ function closePopup(event) {
   let overlay = document.querySelector('[popup-element="overlay"]');
   let popups = document.querySelectorAll('[popup-element="popup"]');
 
-  popups.forEach(popup => {
+  popups.forEach((popup) => {
     // Проверяем, находится ли клик вне текущего popup
     const isClickOutside = !popup.contains(event.target);
     // Проверяем, является ли элемент, по которому кликнули, кнопкой закрытия
-    const isCloseButton = event.target.hasAttribute('popup-element') && event.target.getAttribute('popup-element') === 'popup-close';
+    const isCloseButton =
+      event.target.hasAttribute("popup-element") &&
+      event.target.getAttribute("popup-element") === "popup-close";
 
     // Если клик вне popup или по кнопке закрытия — скрываем его
     if (isClickOutside || isCloseButton) {
       popup.classList.remove("show");
       // Если все попапы закрыты, скрываем оверлей
       setTimeout(() => {
-        const allPopupsClosed = Array.from(popups).every(p => !p.classList.contains('show'));
+        const allPopupsClosed = Array.from(popups).every(
+          (p) => !p.classList.contains("show"),
+        );
         if (allPopupsClosed) {
           overlay.classList.remove("show");
         }
       }, 300);
     }
   });
- 
 }
-
-
 
 // Функция открытия подменю после загрузки страницы
 function openMenuAfterLoad(menu) {
@@ -47,19 +48,19 @@ function openMenuAfterLoad(menu) {
   menuItems.forEach((mainMenuElem) => {
     if (mainMenuElem.classList.contains("active")) {
       let programsMenu = mainMenuElem.querySelector(
-        '[menu-elem="programs-menu"]'
+        '[menu-elem="programs-menu"]',
       );
 
       if (programsMenu) {
         programsMenu.style.maxHeight = programsMenu.scrollHeight + "px";
         let programMenuItem = programsMenu.querySelectorAll(
-          '[menu-elem="programs-menu-item"]'
+          '[menu-elem="programs-menu-item"]',
         );
 
         programMenuItem.forEach((program) => {
           if (program.classList.contains("active")) {
             let modulesMenu = program.querySelector(
-              '[menu-elem="modules-menu"]'
+              '[menu-elem="modules-menu"]',
             );
 
             if (modulesMenu) {
@@ -86,14 +87,14 @@ function openMenuPrograms(event) {
 
     // Закрываем все подпункты с модулями внутри этого пункта
     let programModulesMenu = programsMenu.querySelectorAll(
-      '[menu-elem="modules-menu"]'
+      '[menu-elem="modules-menu"]',
     );
     programModulesMenu.forEach((element) => {
       let elementProgramItem = element.closest(
-        '[menu-elem="programs-menu-item"]'
+        '[menu-elem="programs-menu-item"]',
       );
       let elementProgramHeader = elementProgramItem.querySelector(
-        '[menu-elem="program-header"]'
+        '[menu-elem="program-header"]',
       );
 
       elementProgramItem.classList.remove("active");
@@ -103,26 +104,26 @@ function openMenuPrograms(event) {
   } else {
     // Если кликаем по неактивному пункту
     let allMainMenuItems = mainMenu.querySelectorAll(
-      '[menu-elem="main-header"]'
+      '[menu-elem="main-header"]',
     );
     // Проходим по всем остальные пункты
     allMainMenuItems.forEach((element) => {
       let elementMenuItem = element.closest('[menu-elem="main-menu-item"]');
       let elementProgramsMenu = elementMenuItem.querySelector(
-        '[menu-elem="programs-menu"]'
+        '[menu-elem="programs-menu"]',
       );
 
       elementMenuItem.classList.remove("active");
       elementProgramsMenu.style.maxHeight = 0; // Закрываем их
 
       let elementProgramModulesMenu = elementProgramsMenu.querySelectorAll(
-        '[menu-elem="modules-menu"]'
+        '[menu-elem="modules-menu"]',
       );
       // Проходим по всем подпунктам с модулями
       elementProgramModulesMenu.forEach((elem) => {
         let elemProgramItem = elem.closest('[menu-elem="programs-menu-item"]');
         let elemProgramHeader = elemProgramItem.querySelector(
-          '[menu-elem="program-header"]'
+          '[menu-elem="program-header"]',
         );
         // Закрываем их
         elemProgramItem.classList.remove("active");
@@ -143,7 +144,7 @@ function openMenuPrograms(event) {
 // Открытие модулей в программе
 function openMenuModules(event) {
   let programMenuItem = event.target.closest(
-    '[ menu-elem="programs-menu-item"]'
+    '[ menu-elem="programs-menu-item"]',
   );
   let modulesMenu = programMenuItem.querySelector('[menu-elem="modules-menu"]');
   let programsMenu = programMenuItem.closest('[menu-elem="programs-menu"]');
@@ -155,16 +156,16 @@ function openMenuModules(event) {
   } else {
     // Если кликаем по неактивному пункту
     let allProgramsMenuItems = mainMenu.querySelectorAll(
-      '[menu-elem="program-header"]'
+      '[menu-elem="program-header"]',
     );
 
     // Закрываем другие модули
     allProgramsMenuItems.forEach((element) => {
       let elementProgramItem = element.closest(
-        '[menu-elem="programs-menu-item"]'
+        '[menu-elem="programs-menu-item"]',
       );
       let elementModulesMenu = elementProgramItem.querySelector(
-        '[menu-elem="modules-menu"]'
+        '[menu-elem="modules-menu"]',
       );
 
       elementProgramItem.classList.remove("active");
@@ -234,20 +235,24 @@ if (openPopupButton) {
   openPopupButton.addEventListener("click", openPopup);
 }
 
-let openPopupSaveHistory = document.querySelector('[element-action="open-popup-save-history"]')
+let openPopupSaveHistory = document.querySelector(
+  '[element-action="open-popup-save-history"]',
+);
 
-if (openPopupSaveHistory){
-  openPopupSaveHistory.addEventListener("click", function(){
-    openPopup('[popup-type="save-history"]')
-  })
+if (openPopupSaveHistory) {
+  openPopupSaveHistory.addEventListener("click", function () {
+    openPopup('[popup-type="save-history"]');
+  });
 }
 
-let openPopupClearHistory = document.querySelector('[element-action="open-popup-clear-history"]')
+let openPopupClearHistory = document.querySelector(
+  '[element-action="open-popup-clear-history"]',
+);
 
-if (openPopupClearHistory){
-  openPopupClearHistory.addEventListener("click", function(){
-    openPopup('[popup-type="clear-history"]')
-  })
+if (openPopupClearHistory) {
+  openPopupClearHistory.addEventListener("click", function () {
+    openPopup('[popup-type="clear-history"]');
+  });
 }
 
 let overlay = document.querySelector('[popup-element="overlay"]');
@@ -269,118 +274,132 @@ if (finalTestingLink) {
   }
 }
 
-let faqItems = document.querySelectorAll('[faq-elem="item"]')
+let faqItems = document.querySelectorAll('[faq-elem="item"]');
 
 if (faqItems.length > 0) {
   faqItems.forEach((element) => {
-    let question = element.querySelector('[faq-elem="question"]')
+    let question = element.querySelector('[faq-elem="question"]');
 
-    question.addEventListener('click', function (event) {
-      let item = this.closest('[faq-elem="item"]')
-      let wrapper = this.closest('[faq-elem="wrapper"]')
-      let thisAnswer = item.querySelector('[faq-elem="answer"]')
+    question.addEventListener("click", function (event) {
+      let item = this.closest('[faq-elem="item"]');
+      let wrapper = this.closest('[faq-elem="wrapper"]');
+      let thisAnswer = item.querySelector('[faq-elem="answer"]');
 
-      if (item.classList.contains('active')) {
-        thisAnswer.style.maxHeight = 0 + 'px'
-        item.classList.remove('active')
+      if (item.classList.contains("active")) {
+        thisAnswer.style.maxHeight = 0 + "px";
+        item.classList.remove("active");
       } else {
-        let allItems = wrapper.querySelectorAll('[faq-elem="item"]')
+        let allItems = wrapper.querySelectorAll('[faq-elem="item"]');
 
         allItems.forEach(function (elem) {
-          let answer = elem.querySelector('[faq-elem="answer"]')
-          answer.style.maxHeight = 0 + 'px'
-          elem.classList.remove('active')
-        })
+          let answer = elem.querySelector('[faq-elem="answer"]');
+          answer.style.maxHeight = 0 + "px";
+          elem.classList.remove("active");
+        });
 
-        thisAnswer.style.maxHeight = thisAnswer.scrollHeight + "px"
-        item.classList.add('active')
+        thisAnswer.style.maxHeight = thisAnswer.scrollHeight + "px";
+        item.classList.add("active");
       }
-    })
-  })
+    });
+  });
 }
 
-let supportSubmitButton = document.querySelector('[support-form-elem="submit"]')
+let supportSubmitButton = document.querySelector(
+  '[support-form-elem="submit"]',
+);
 
 if (supportSubmitButton) {
+  supportSubmitButton.addEventListener("click", function (event) {
+    let form = this.closest("form");
+    let isError = false;
 
-  supportSubmitButton.addEventListener('click', function (event) {
-    let form = this.closest('form')
-    let isError = false
+    form
+      .querySelectorAll('[form-elem="input-error"]')
+      .forEach(function (element) {
+        element.innerText = "";
+        element.closest('[form-elem="label"]').classList.remove("error");
+      });
 
-    form.querySelectorAll('[form-elem="input-error"]').forEach(function(element) {
-      element.innerText = ""
-      element.closest('[form-elem="label"]').classList.remove("error")
-    })
+    form
+      .querySelectorAll('[form-elem="input-text"]')
+      .forEach(function (element) {
+        if (element.value == "") {
+          isError = true;
+          element.nextElementSibling.innerText = "Поле не может быть пустым";
+          element.closest('[form-elem="label"]').classList.add("error");
+        }
+      });
 
-    form.querySelectorAll('[form-elem="input-text"]').forEach(function(element) {
-      if(element.value == "") {
-        isError = true
-        element.nextElementSibling.innerText = "Поле не может быть пустым"
-        element.closest('[form-elem="label"]').classList.add("error")
-      }
-    })
-
-    if(!isError){
-      let supportUrl =  document.querySelector('[support-form-elem="submit"]').getAttribute('support-url')
+    if (!isError) {
+      let supportUrl = document
+        .querySelector('[support-form-elem="submit"]')
+        .getAttribute("support-url");
       fetch(supportUrl, {
-        method: 'POST',
+        method: "POST",
         body: new FormData(form),
       })
-      .then(res => res.ok ? openPopup() : Promise.reject(res))
-      .catch(() => alert('Ошибка отправки сообщения'));
+        .then((res) => (res.ok ? openPopup() : Promise.reject(res)))
+        .catch(() => alert("Ошибка отправки сообщения"));
     }
-    
-    
-  })
+  });
 }
 
-let surveySubmitButton = document.querySelector('[survey-form-elem="submit"]')
+let surveySubmitButton = document.querySelector('[survey-form-elem="submit"]');
 
 if (surveySubmitButton) {
-  surveySubmitButton.addEventListener('click', function (event) {
-    let form = this.closest('form')
-    let errorField = form.querySelector('[survey-form-elem="error"]')
-    let isError = true
-    let radioCourseWasUseful = ""
-    let radioUsability = ""
+  surveySubmitButton.addEventListener("click", function (event) {
+    let form = this.closest("form");
+    let errorField = form.querySelector('[survey-form-elem="error"]');
+    let isError = true;
+    let radioCourseWasUseful = "";
+    let radioUsability = "";
 
-    let formRadioCourseWasUseful = form.querySelectorAll('input[type="radio"][name="question1"]')
-    let formRadioUsability = form.querySelectorAll('input[type="radio"][name="question3"]')
-    let formTextareaMaterial = form.querySelector('textarea#usability')
-    let formTextareaWish = form.querySelector('textarea#wish')
+    let formRadioCourseWasUseful = form.querySelectorAll(
+      'input[type="radio"][name="question1"]',
+    );
+    let formRadioUsability = form.querySelectorAll(
+      'input[type="radio"][name="question3"]',
+    );
+    let formTextareaMaterial = form.querySelector("textarea#usability");
+    let formTextareaWish = form.querySelector("textarea#wish");
 
     formRadioCourseWasUseful.forEach(function (elem) {
       if (elem.checked) {
-        radioCourseWasUseful = elem.value
+        radioCourseWasUseful = elem.value;
       }
-    })
+    });
 
     formRadioUsability.forEach(function (elem) {
       if (elem.checked) {
-        radioUsability = elem.value
+        radioUsability = elem.value;
       }
-    })
+    });
 
-    if (radioCourseWasUseful != "" &&
+    if (
+      radioCourseWasUseful != "" &&
       radioUsability != "" &&
       formTextareaMaterial.value != "" &&
-      formTextareaWish.value != "") {
-      isError = false
+      formTextareaWish.value != ""
+    ) {
+      isError = false;
     }
 
-    if (isError){
-      errorField.innerText = "Пожалуйста, ответьте на все вопросы. Нам будет приятно"
+    if (isError) {
+      errorField.innerText =
+        "Пожалуйста, ответьте на все вопросы. Нам будет приятно";
     } else {
-      errorField.innerText = ""
-      let surveySaveUrl =  document.querySelector('[survey-form-elem="submit"]').getAttribute('survey-save-url')
+      errorField.innerText = "";
+      let surveySaveUrl = document
+        .querySelector('[survey-form-elem="submit"]')
+        .getAttribute("survey-save-url");
       fetch(surveySaveUrl, {
-        method: 'POST',
+        method: "POST",
         body: new FormData(form),
       })
-      .then(res => res.ok ? openPopup() : Promise.reject(res))
-      .catch(() => alert('Ошибка отправки сообщения'));
+        .then((res) => (res.ok ? openPopup() : Promise.reject(res)))
+        .catch(() => alert("Ошибка отправки сообщения"));
     }
-  })
+  });
 }
 
 const passwordInput = document.querySelector(".password_input");
@@ -409,4 +428,94 @@ if (passwordInput) {
     eyeHideContainer.style.display = "none";
     eyeShowContainer.style.display = "block";
   });
+}
+
+//логика таймера взята из js/timer.js и закомментирована там же, что скрипт отрабатывал на всех страницах, а не только на странице теста
+
+let timer = document.querySelector('[test-elem="timer"]');
+
+let startBtn = document.querySelector('[popup-element="popup-close"]');
+
+if (timer) {
+  let backTimerUrl = timer.getAttribute("back-timer-url");
+
+  function getServerTimestamp() {
+    return fetch(backTimerUrl)
+      .then((response) => response.text())
+      .then((timestamp) => {
+        timer.setAttribute("cur-time", timestamp);
+        countdownTimer();
+      });
+  }
+
+  function countdownTimer() {
+    let curServerTime = timer.getAttribute("cur-time");
+    let currentDate = new Date(+curServerTime);
+    let diff = endDate - currentDate;
+
+    if (diff <= 0) {
+      clearInterval(timerId);
+      sessionStorage.removeItem("endTimestamp");
+      document.dispatchEvent(new Event("ticketTimeout"));
+    }
+
+    printCountdown(diff);
+
+    timer.setAttribute("cur-time", parseInt(curServerTime) + 1);
+    timer.classList.add("show");
+  }
+
+  function printCountdown(diff) {
+    let minutes = diff > 0 ? Math.floor(diff / 60) % 60 : 0;
+    let seconds = diff > 0 ? Math.floor(diff) % 60 : 0;
+
+    let formatMinutes = minutes < 10 ? "0" + minutes : minutes;
+    let formatSeconds = seconds < 10 ? "0" + seconds : seconds;
+
+    elemMinutes.innerHTML = formatMinutes;
+    elemSeconds.innerHTML = formatSeconds;
+  }
+  let elemMinutes = timer.querySelector('[test-elem="minutes"]');
+  let elemSeconds = timer.querySelector('[test-elem="seconds"]');
+
+  let endTimestamp;
+  let endDate;
+
+  let timerId = null;
+  let savedEndTimestamp = sessionStorage.getItem("endTimestamp");
+  if (savedEndTimestamp) {
+    getServerTimestamp();
+    endTimestamp = +savedEndTimestamp;
+    endDate = new Date(endTimestamp);
+    const interval = setInterval(() => {
+      setInterval(getServerTimestamp, 10000);
+      timerId = setInterval(countdownTimer, 1000);
+      clearInterval(interval);
+    }, 100);
+  } else {
+    //клик по кнопке попапа и старт таймера после получения данныз с бэка
+    startBtn.onclick = () => {
+      getServerTimestamp();
+      let quantityMinutesElem = document.querySelector(
+        '[tag-minutes="quantity-minutes"]',
+      );
+      let quantityMinutes = +quantityMinutesElem.textContent;
+      let quantitySeconds = quantityMinutes * 60;
+
+      const interval = setInterval(() => {
+        sessionStorage.removeItem("endTimestamp");
+        endTimestamp = +timer.getAttribute("cur-time") + quantitySeconds;
+        sessionStorage.setItem("endTimestamp", endTimestamp);
+
+        if (endTimestamp > quantitySeconds) {
+          endDate = new Date(endTimestamp);
+          setInterval(getServerTimestamp, 10000);
+          timerId = setInterval(countdownTimer, 1000);
+          clearInterval(interval);
+        }
+      }, 100);
+    };
+  }
+} else {
+  sessionStorage.removeItem("endTimestamp");
 }

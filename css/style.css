@@ -281,7 +281,7 @@ img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .header_profile_noavatar {
@@ -485,7 +485,7 @@ img {
 .eye_password_container {
   position: absolute;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   overflow: hidden;
   width: 15%;
   height: 70%;
@@ -611,7 +611,7 @@ img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .demo-programs_item_header {
@@ -667,7 +667,7 @@ img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .programs_item_header {
@@ -729,7 +729,7 @@ img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .program_files_item_name {
@@ -833,20 +833,20 @@ img {
 }
 
 .module_video {
-    position: relative;
-    height: 0;
-    padding-bottom: 56.25%;
-    overflow: hidden;
+  position: relative;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
 }
 
 .module_video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-width: 0;
-    outline-width: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-width: 0;
+  outline-width: 0;
 }
 
 /* /module */
@@ -863,6 +863,10 @@ img {
   right: 0;
   display: flex;
   align-items: center;
+  /* display: none; */
+}
+.express-test_header_timer.show {
+  display: flex;
 }
 
 .express-test_header_timer_minutes {
@@ -1403,7 +1407,7 @@ img {
   padding-left: 2px;
   padding-right: 2px;
   padding-bottom: 2px;
-  margin:20px 0;
+  margin: 20px 0;
 }
 
 .history_table_header {
@@ -1595,7 +1599,7 @@ img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .photo_change_button_wrapper {
@@ -1629,7 +1633,6 @@ img {
 /* faq */
 
 .faq {
-
 }
 
 .faq_list {
@@ -1795,9 +1798,9 @@ img {
   text-transform: uppercase;
   width: 100%;
 }
-.arrow-links-next{
+.arrow-links-next {
   justify-content: right;
 }
-.arrow-links-prev{
+.arrow-links-prev {
   justify-content: left;
 }

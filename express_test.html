@@ -301,9 +301,9 @@
             </div>
         </footer>
         <!--Что бы popup отобразился, необходимо добавить в элемент с классом "overlay" класс "show"-->
-        <div class="overlay" popup-element="overlay">
+        <div class="overlay show" popup-element="overlay">
             <!--Что бы popup отобразился, необходимо добавить в элемент с классом "popup" класс "show"-->
-            <div class="popup" popup-element="popup">
+            <div class="popup show" popup-element="popup">
                 <div class="express-test_popup_header">Переход к итоговому тестированию</div>
                 <div class="express-test_popup_description">
                     1. Проходить итоговый тест можно <strong>неограниченное количество раз</strong> в течение срока действия курса<br/>
@@ -312,8 +312,8 @@
                     Оранжевый цвет – текущий вопрос<br/>
                     Синий цвет – отвеченный вопрос<br/>
                     Белый цвет – не отвеченный вопрос<br/><br/>
-
-                    <strong>Время на тестирование:</strong> … минут<br/>
+                    <!--В тэг tag-minutes="quantity-minutes" записываются количество минут которые даются на прохождение теста пример <span tag-minutes="quantity-minutes">10</span>  -->
+                    <strong>Время на тестирование:</strong> <span tag-minutes="quantity-minutes">1</span> минут<br/>
                     <strong>Допустимое количество ошибок для положительной сдачи:</strong> … 
                 </div>
                 <div class="popup_close_wrapper">
