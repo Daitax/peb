@@ -434,9 +434,14 @@ if (passwordInput) {
 
 let timer = document.querySelector('[test-elem="timer"]');
 
-let startBtn = document.querySelector('[popup-element="popup-close"]');
-
 if (timer) {
+  let overlay = document.querySelector('[popup-element="overlay"]');
+  let popup = overlay.querySelector('[popup-element="popup"]');
+  let startBtn = popup.querySelector('[popup-element="popup-close"]');
+
+  // инпут, в котором хранится id темы итогового теста для привязки таймера к конкретному тесту
+  let timeControlInput = document.querySelector(".time-control");
+
   let backTimerUrl = timer.getAttribute("back-timer-url");
 
   function getServerTimestamp() {
@@ -455,7 +460,7 @@ if (timer) {
 
     if (diff <= 0) {
       clearInterval(timerId);
-      sessionStorage.removeItem("endTimestamp");
+      localStorage.removeItem(`endTimestamp test: ${testThemeId}`);
       document.dispatchEvent(new Event("ticketTimeout"));
     }
 
@@ -481,8 +486,15 @@ if (timer) {
   let endTimestamp;
   let endDate;
 
+  //тут мы берем id темы из скрытого инпута timeControl для привязки конца таймера к конкретному итоговому тесту отдельной темой
+  let testThemeId = timeControlInput.getAttribute("data-permission-id");
+
   let timerId = null;
-  let savedEndTimestamp = sessionStorage.getItem("endTimestamp");
+  let savedEndTimestamp = localStorage.getItem(
+    `endTimestamp test: ${testThemeId}`,
+  );
+
+  //если в локалсторадж есть значение конца таймера, то восстанавливаем таймер
   if (savedEndTimestamp) {
     getServerTimestamp();
     endTimestamp = +savedEndTimestamp;
@@ -492,30 +504,46 @@ if (timer) {
       timerId = setInterval(countdownTimer, 1000);
       clearInterval(interval);
     }, 100);
+    //если нет, то логика зависит от того, открыт ли попап с началом теста
   } else {
-    //клик по кнопке попапа и старт таймера после получения данныз с бэка
-    startBtn.onclick = () => {
-      getServerTimestamp();
-      let quantityMinutesElem = document.querySelector(
-        '[tag-minutes="quantity-minutes"]',
-      );
-      let quantityMinutes = +quantityMinutesElem.textContent;
-      let quantitySeconds = quantityMinutes * 60;
-
-      const interval = setInterval(() => {
-        sessionStorage.removeItem("endTimestamp");
-        endTimestamp = +timer.getAttribute("cur-time") + quantitySeconds;
-        sessionStorage.setItem("endTimestamp", endTimestamp);
-
-        if (endTimestamp > quantitySeconds) {
-          endDate = new Date(endTimestamp);
-          setInterval(getServerTimestamp, 10000);
-          timerId = setInterval(countdownTimer, 1000);
-          clearInterval(interval);
+    //если попап открыт, то логика срабатывает только по клику на кнопку старта внутри попапа или по клику вне попапа на оверлей
+    if (overlay.classList.contains("show")) {
+      overlay.addEventListener("click", (event) => {
+        if (event.target === startBtn) {
+          return;
         }
-      }, 100);
-    };
+        if (popup.contains(event.target)) {
+          return;
+        }
+        startTimer();
+      });
+      startBtn.onclick = () => startTimer();
+    } else {
+      //если попап не открыт, то стартуем таймер сразу
+      startTimer();
+    }
   }
-} else {
-  sessionStorage.removeItem("endTimestamp");
+
+  function startTimer() {
+    getServerTimestamp();
+    let quantityMinutesElem = document.querySelector(
+      '[tag-minutes="quantity-minutes"]',
+    );
+    let quantityMinutes = +quantityMinutesElem.textContent;
+    let quantitySeconds = quantityMinutes * 60;
+
+    const interval = setInterval(() => {
+      endTimestamp = +timer.getAttribute("cur-time") + quantitySeconds;
+
+      //cохраняем в локалсторадж конец таймера с привязкой к конкретному тесту по id темы
+      localStorage.setItem(`endTimestamp test: ${testThemeId}`, endTimestamp);
+
+      if (endTimestamp > quantitySeconds) {
+        endDate = new Date(endTimestamp);
+        setInterval(getServerTimestamp, 10000);
+        timerId = setInterval(countdownTimer, 1000);
+        clearInterval(interval);
+      }
+    }, 100);
+  }
 }
