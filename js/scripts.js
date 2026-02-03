@@ -439,6 +439,9 @@ if (timer) {
   let popup = overlay.querySelector('[popup-element="popup"]');
   let startBtn = popup.querySelector('[popup-element="popup-close"]');
 
+  // получаем кнопку "завершить тестирование"
+  let endTestBtn = document.querySelector(".express-test_form_button_end");
+
   // инпут, в котором хранится id темы итогового теста для привязки таймера к конкретному тесту
   let timeControlInput = document.querySelector(".time-control");
 
@@ -469,6 +472,12 @@ if (timer) {
     timer.setAttribute("cur-time", parseInt(curServerTime) + 1);
     timer.classList.add("show");
   }
+
+  //при нажатии на кнопку "завершить тестирование очищаем таймер"
+  endTestBtn.onclick = () => {
+    clearInterval(timerId);
+    localStorage.removeItem(`endTimestamp test: ${testThemeId}`);
+  };
 
   function printCountdown(diff) {
     let minutes = diff > 0 ? Math.floor(diff / 60) % 60 : 0;
