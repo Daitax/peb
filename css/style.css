@@ -946,6 +946,11 @@ img {
   padding-left: 50px;
   padding-right: 50px;
 }
+.express-test_form_button_next:disabled {
+  background: #c8d6dc;
+  border-color: #c8d6dc;
+  cursor: not-allowed;
+}
 
 .express-test_form_button_end {
   padding-left: 30px;

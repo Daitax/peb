@@ -447,6 +447,21 @@ if (timer) {
 
   let backTimerUrl = timer.getAttribute("back-timer-url");
 
+  //кнопка "ответить"
+  const answeredButton = document.querySelector(
+    ".express-test_form_button_next",
+  );
+  // по умолчанию кнопка "ответить" неактивна, это сделано для того, чтобы пользователь не мог пропустить вопрос, не выбрав ответ на последнем вопросе, потому что на последнем вопросе кнопка "ответить" очищает таймер из локалсторадж
+  answeredButton.disabled = true;
+
+  const radioInputs = document.querySelectorAll(".test_form_radio");
+  radioInputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      // при выборе любого ответа активируем кнопку "ответить"
+      answeredButton.disabled = false;
+    });
+  });
+
   function getServerTimestamp() {
     return fetch(backTimerUrl)
       .then((response) => response.text())
@@ -502,6 +517,24 @@ if (timer) {
   let savedEndTimestamp = localStorage.getItem(
     `endTimestamp test: ${testThemeId}`,
   );
+
+  let questionPaginationItem = document.querySelectorAll(
+    ".express-test_pagination_item",
+  );
+  //считаем количество отвеченных вопросов
+  let answeredCount = 0;
+  for (let i = 0; i < questionPaginationItem.length; i++) {
+    if (questionPaginationItem[i].classList.contains("answered")) {
+      answeredCount++;
+    }
+  }
+
+  //если отвечены все вопросы, то по клику на кнопку "ответить" очищаем таймер из локалсторадж
+  if (answeredCount === questionPaginationItem.length - 1) {
+    answeredButton.addEventListener("click", () => {
+      localStorage.removeItem(`endTimestamp test: ${testThemeId}`);
+    });
+  }
 
   //если в локалсторадж есть значение конца таймера, то восстанавливаем таймер
   if (savedEndTimestamp) {
