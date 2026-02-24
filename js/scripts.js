@@ -396,8 +396,26 @@ if (surveySubmitButton) {
         method: "POST",
         body: new FormData(form),
       })
-        .then((res) => (res.ok ? openPopup() : Promise.reject(res)))
-        .catch(() => alert("Ошибка отправки сообщения"));
+        .then(async (res) => {
+          const contentType = res.headers.get('content-type')
+
+          if (res.ok) {
+            if (contentType && contentType.includes('application/json')) {
+              const data = await res.json()
+              if (data) {
+                openPopup()
+              } else {
+                errorField.innerText = "Ваш ответ уже учтен. Спасибо"
+              }
+            }
+          } else {
+            return Promise.reject(res);
+          }
+        })
+        .catch((error) => {
+          console.error('Ошибка:', error);
+          alert("Ошибка отправки сообщения");
+        })
     }
   });
 }
@@ -454,7 +472,7 @@ if (timer) {
   // по умолчанию кнопка "ответить" неактивна, это сделано для того, чтобы пользователь не мог пропустить вопрос, не выбрав ответ на последнем вопросе, потому что на последнем вопросе кнопка "ответить" очищает таймер из локалсторадж
   answeredButton.disabled = true;
 
-  const radioInputs = document.querySelectorAll(".test_form_radio");
+  const radioInputs = document.querySelectorAll(".test_form_radio, .test_form_checkbox");
   radioInputs.forEach((input) => {
     input.addEventListener("change", () => {
       // при выборе любого ответа активируем кнопку "ответить"
