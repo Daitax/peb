@@ -1,348 +1,488 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/mstyle.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/mstyle.css" />
     <title>История обучения</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="global-wrapper">
-        <header class="header container">
-            <div class="header_logo">
-                <a href="my_programs.html">
-                    <img src="images/header-logo.png" alt="logo">
-                </a>
+      <header class="header container">
+        <div class="header_logo">
+          <a href="my_programs.html">
+            <img src="images/header-logo.png" alt="logo" />
+          </a>
+        </div>
+        <a href="profile.html" class="header_profile">
+          <div class="header_profile_fullname">
+            <div class="header_profile_lastname">Константинопольский</div>
+            <div class="header_profile_name">
+              <div class="header_profile_firstname">Константин</div>
+              <div class="header_profile_middlename">Константинович</div>
             </div>
-            <a href="profile.html" class="header_profile">
-                <div class="header_profile_fullname">
-                    <div class="header_profile_lastname">Константинопольский</div>
-                    <div class="header_profile_name">
-                        <div class="header_profile_firstname">Константин</div>
-                        <div class="header_profile_middlename">Константинович</div>
-                    </div>
-                </div>
-                <!--Если у пользователя есть аватарка-->
-                <div class="header_profile_avatar">
-                    <img src="images/avatar.png" alt="">
-                </div>
-                <!--Если у пользователя нет аватарки, выводим первые буквы
+          </div>
+          <!--Если у пользователя есть аватарка-->
+          <div class="header_profile_avatar">
+            <img src="images/avatar.png" alt="" />
+          </div>
+          <!--Если у пользователя нет аватарки, выводим первые буквы
                 фамилии и имени-->
-                <!--<div class="header_profile_noavatar">
+          <!--<div class="header_profile_noavatar">
                     <div class="header_profile_noavatar_abbreviation">КК</div>
                 </div>-->
-            </a>
-        </header>
-        <div class="global-content">
-            <div class="global-background">
-                <div class="global_background_overlay"></div>
-                <div class="global-background_image">
-                    <img src="images/global-background-image.svg" alt="">
-                </div>
+        </a>
+      </header>
+      <div class="global-content">
+        <div class="global-background">
+          <div class="global_background_overlay"></div>
+          <div class="global-background_image">
+            <img src="images/global-background-image.svg" alt="" />
+          </div>
+        </div>
+        <div class="wrapper container">
+          <div class="left-menu">
+            <div class="main-menu_mobile_button" menu-elem="mobile-open">
+              Меню
             </div>
-            <div class="wrapper container">
-                <div class="left-menu">
-                    <div class="main-menu_mobile_button" menu-elem="mobile-open">Меню</div>
-                    <nav class="main-menu" menu-elem="main-menu">
-                        <li class="main-menu_item" menu-elem="main-menu-item">
-                            <a href="my_programs.html" class="main-menu_item_header" menu-elem="main-header">Мои программы</a>
-                            <ul class="programs-menu" menu-elem="programs-menu">
-                                <li class="programs-menu_item" menu-elem="programs-menu-item">
-                                    <a href="first_aid.html"  class="programs-menu_item_header" menu-elem="program-header">Оказание первой помощи пострадавшим</a>
-                                    <ul class="modules-menu" menu-elem="modules-menu">
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">
-                                                <a href="javascript:void(0)">Нормативная документация</a>
-                                            </div>
-                                        </li>
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">Модуль 1. Название модуля</div>
-                                            <ul class="parts-menu">
-                                                <li class="parts-menu_item">
-                                                    <a href="module_theory.html">Теоретическая часть</a>
-                                                </li>
-                                                <li class="parts-menu_item">
-                                                    <a href="javascript:void(0)">Практическая часть</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">Модуль 2. Название модуля</div>
-                                            <ul class="parts-menu">
-                                                <li class="parts-menu_item">
-                                                    <a href="javascript:void(0)">Теоретическая часть</a>
-                                                </li>
-                                                <li class="parts-menu_item">
-                                                    <a href="javascript:void(0)">Практическая часть</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">Модуль 3. Название модуля</div>
-                                            <ul class="parts-menu">
-                                                <li class="parts-menu_item">
-                                                    <a href="javascript:void(0)">Теоретическая часть</a>
-                                                </li>
-                                                <li class="parts-menu_item">
-                                                    <a href="javascript:void(0)">Практическая часть</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">
-                                                <a href="express_test.html">Итоговое тестирование</a>
-                                            </div>
-                                        </li>
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">
-                                                <a href="survey_course.html">Опрос по курсу</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="programs-menu_item" menu-elem="programs-menu-item">
-                                    <a href="SUOT.html" class="programs-menu_item_header" menu-elem="program-header">Общие вопросы охраны труда и функционирования СУОТ</a>
-                                    <ul class="modules-menu" menu-elem="modules-menu">
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">
-                                                <a href="javascript:void(0)">Нормативная документация</a>
-                                            </div>
-                                        </li>
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">Модуль 1. Название модуля</div>
-                                            <ul class="parts-menu">
-                                                <li class="parts-menu_item">
-                                                    <a href="javascript:void(0)">Теоретическая часть</a>
-                                                </li>
-                                                <li class="parts-menu_item">
-                                                    <a href="javascript:void(0)">Практическая часть</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">Модуль 2. Название модуля</div>
-                                            <ul class="parts-menu">
-                                                <li class="parts-menu_item">
-                                                    <a href="javascript:void(0)">Теоретическая часть</a>
-                                                </li>
-                                                <li class="parts-menu_item">
-                                                    <a href="javascript:void(0)">Практическая часть</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">Модуль 3. Название модуля</div>
-                                            <ul class="parts-menu">
-                                                <li class="parts-menu_item">
-                                                    <a href="javascript:void(0)">Теоретическая часть</a>
-                                                </li>
-                                                <li class="parts-menu_item">
-                                                    <a href="javascript:void(0)">Практическая часть</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">
-                                                <a href="javascript:void(0)">Итоговое тестирование</a>
-                                            </div>
-                                        </li>
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">
-                                                <a href="survey_course.html">Опрос по курсу</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="programs-menu_item" menu-elem="programs-menu-item">
-                                    <a href="gas_oil.html" class="programs-menu_item_header" menu-elem="program-header">Б2. Нефтяная и газовая промышленность</a>
-                                    <ul class="modules-menu" menu-elem="modules-menu">
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">
-                                                <a href="javascript:void(0)">Нормативная документация</a>
-                                            </div>
-                                        </li>
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">
-                                                <a href="control_questions.html">Подготовка к аттестации</a>
-                                            </div>
-                                        </li>
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">
-                                                <a href="express_test.html">Итоговое тестирование</a>
-                                            </div>
-                                        </li>
-                                        <li class="modules-menu_item">
-                                            <div class="modules-menu_item_header">
-                                                <a href="survey_course.html">Опрос по курсу</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="main-menu_item active" menu-elem="main-menu-item">
-                            <a class="main-menu_item_header" href="history.html">История обучения</a>
-                        </li>
-                        <li class="main-menu_item" menu-elem="main-menu-item">
-                            <a class="main-menu_item_header" href="support.html">Поддержка</a>
-                        </li>
-                        <li class="main-menu_item" menu-elem="main-menu-item">
-                            <a class="main-menu_item_header" href="faq.html">Полезное</a>
-                        </li>
-                    </nav>
+            <nav class="main-menu" menu-elem="main-menu">
+              <li class="main-menu_item" menu-elem="main-menu-item">
+                <a
+                  href="my_programs.html"
+                  class="main-menu_item_header"
+                  menu-elem="main-header"
+                  >Мои программы</a
+                >
+                <ul class="programs-menu" menu-elem="programs-menu">
+                  <li class="programs-menu_item" menu-elem="programs-menu-item">
+                    <a
+                      href="first_aid.html"
+                      class="programs-menu_item_header"
+                      menu-elem="program-header"
+                      >Оказание первой помощи пострадавшим</a
+                    >
+                    <ul class="modules-menu" menu-elem="modules-menu">
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          <a href="javascript:void(0)"
+                            >Нормативная документация</a
+                          >
+                        </div>
+                      </li>
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          Модуль 1. Название модуля
+                        </div>
+                        <ul class="parts-menu">
+                          <li class="parts-menu_item">
+                            <a href="module_theory.html">Теоретическая часть</a>
+                          </li>
+                          <li class="parts-menu_item">
+                            <a href="javascript:void(0)">Практическая часть</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          Модуль 2. Название модуля
+                        </div>
+                        <ul class="parts-menu">
+                          <li class="parts-menu_item">
+                            <a href="javascript:void(0)">Теоретическая часть</a>
+                          </li>
+                          <li class="parts-menu_item">
+                            <a href="javascript:void(0)">Практическая часть</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          Модуль 3. Название модуля
+                        </div>
+                        <ul class="parts-menu">
+                          <li class="parts-menu_item">
+                            <a href="javascript:void(0)">Теоретическая часть</a>
+                          </li>
+                          <li class="parts-menu_item">
+                            <a href="javascript:void(0)">Практическая часть</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          <a href="express_test.html">Итоговое тестирование</a>
+                        </div>
+                      </li>
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          <a href="survey_course.html">Опрос по курсу</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="programs-menu_item" menu-elem="programs-menu-item">
+                    <a
+                      href="SUOT.html"
+                      class="programs-menu_item_header"
+                      menu-elem="program-header"
+                      >Общие вопросы охраны труда и функционирования СУОТ</a
+                    >
+                    <ul class="modules-menu" menu-elem="modules-menu">
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          <a href="javascript:void(0)"
+                            >Нормативная документация</a
+                          >
+                        </div>
+                      </li>
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          Модуль 1. Название модуля
+                        </div>
+                        <ul class="parts-menu">
+                          <li class="parts-menu_item">
+                            <a href="javascript:void(0)">Теоретическая часть</a>
+                          </li>
+                          <li class="parts-menu_item">
+                            <a href="javascript:void(0)">Практическая часть</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          Модуль 2. Название модуля
+                        </div>
+                        <ul class="parts-menu">
+                          <li class="parts-menu_item">
+                            <a href="javascript:void(0)">Теоретическая часть</a>
+                          </li>
+                          <li class="parts-menu_item">
+                            <a href="javascript:void(0)">Практическая часть</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          Модуль 3. Название модуля
+                        </div>
+                        <ul class="parts-menu">
+                          <li class="parts-menu_item">
+                            <a href="javascript:void(0)">Теоретическая часть</a>
+                          </li>
+                          <li class="parts-menu_item">
+                            <a href="javascript:void(0)">Практическая часть</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          <a href="javascript:void(0)">Итоговое тестирование</a>
+                        </div>
+                      </li>
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          <a href="survey_course.html">Опрос по курсу</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="programs-menu_item" menu-elem="programs-menu-item">
+                    <a
+                      href="gas_oil.html"
+                      class="programs-menu_item_header"
+                      menu-elem="program-header"
+                      >Б2. Нефтяная и газовая промышленность</a
+                    >
+                    <ul class="modules-menu" menu-elem="modules-menu">
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          <a href="javascript:void(0)"
+                            >Нормативная документация</a
+                          >
+                        </div>
+                      </li>
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          <a href="control_questions.html"
+                            >Подготовка к аттестации</a
+                          >
+                        </div>
+                      </li>
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          <a href="express_test.html">Итоговое тестирование</a>
+                        </div>
+                      </li>
+                      <li class="modules-menu_item">
+                        <div class="modules-menu_item_header">
+                          <a href="survey_course.html">Опрос по курсу</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="main-menu_item active" menu-elem="main-menu-item">
+                <a class="main-menu_item_header" href="history.html"
+                  >История обучения</a
+                >
+              </li>
+              <li class="main-menu_item" menu-elem="main-menu-item">
+                <a class="main-menu_item_header" href="support.html"
+                  >Поддержка</a
+                >
+              </li>
+              <li class="main-menu_item" menu-elem="main-menu-item">
+                <a class="main-menu_item_header" href="faq.html">Полезное</a>
+              </li>
+            </nav>
+          </div>
+          <div class="content">
+            <div class="history" history-elem="wrapper">
+              <h1>История обучения</h1>
+              <div class="history_display">
+                <div class="history_display_count_wrapper">
+                  <div class="history_display_count_header">отображать по:</div>
+                  <div class="history_display_count">
+                    <a
+                      href="javascript:void(0)"
+                      class="history_display_count_item active"
+                      >20</a
+                    >
+                    <div class="history_display_separator">|</div>
+                    <a
+                      href="javascript:void(0)"
+                      class="history_display_count_item"
+                      >50</a
+                    >
+                    <div class="history_display_separator">|</div>
+                    <a
+                      href="javascript:void(0)"
+                      class="history_display_count_item"
+                      >100</a
+                    >
+                  </div>
                 </div>
-                <div class="content">
-                    <div class="history" history-elem="wrapper">
-                        <h1>История обучения</h1>
-                        <div class="history_display">
-                            <div class="history_display_count_wrapper">
-                                <div class="history_display_count_header">отображать по: </div>
-                                <div class="history_display_count">
-                                    <a href="javascript:void(0)" class="history_display_count_item active">20</a>
-                                    <div class="history_display_separator">|</div>
-                                    <a href="javascript:void(0)" class="history_display_count_item">50</a>
-                                    <div class="history_display_separator">|</div>
-                                    <a href="javascript:void(0)" class="history_display_count_item">100</a>
-                                </div>
-                            </div>
-                            <div class="history_display_pages_wrapper">
-                                <!--отображаем если не на 1 странице-->
-                                <!--<a href="javascript:void(0)" class="history_display_pages_item">в начало</a>
+                <div class="history_display_pages_wrapper">
+                  <!--отображаем если не на 1 странице-->
+                  <!--<a href="javascript:void(0)" class="history_display_pages_item">в начало</a>
                                 <div class="history_display_separator">|</div>-->
-                                <a href="javascript:void(0)" class="history_display_pages_item active">1</a>
-                                <div class="history_display_separator">|</div>
-                                <a href="javascript:void(0)" class="history_display_pages_item">2</a>
-                                <div class="history_display_separator">|</div>
-                                <a href="javascript:void(0)" class="history_display_pages_item">3</a>
-                                <div class="history_display_separator">|</div>
-                                <a href="javascript:void(0)" class="history_display_pages_item">4</a>
-                                <div class="history_display_separator">|</div>
-                                <a href="javascript:void(0)" class="history_display_pages_item">в конец</a>
-                            </div>
-                        </div>
-                        <div class="history_table">
-                            <div class="history_table_header">
-                                <div class="history_table_row">
-                                    <div class="course">Курс</div>
-                                    <div class="status">Статус</div>
-                                    <div class="start_at">Начало<br>обучения</div>
-                                    <div class="finish_at">Завершение<br>обучения</div>
-                                    <div class="results">Результаты итогового<br>тестирования</div>
-                                    <div class="duration">Длительность<br>обучения</div>
-                                </div>
-                            </div>
-                            <div class="history_table_content" history-elem="inner">
-                                <div class="history_table_row">
-                                    <div class="course">Оказание помощи пострадавшим</div>
-                                    <div class="status">обучение завершено</div>
-                                    <div class="start_at">
-                                        <!--Если у поля есть значение (в данное случае дата начала обучения),-->
-                                        <!--то выводим значения поля-->
-                                        <span class="header">начало обучения: </span>20.09.2022
-                                    </div>
-                                    <div class="finish_at">
-                                        <span class="header">завершение обучения: </span>28.09.2022
-                                    </div>
-                                    <div class="results">
-                                        <div class="results_row"><span class="header">результат: </span>сдано</div>
-                                        <div class="results_row">
-                                            <a href="javascript:void(0)" download>Скачать протокол первой успешной попытки</a>
-                                        </div>
-                                        <div class="results_row">
-                                            <a href="javascript:void(0)" download>Скачать протокол крайней попытки</a>
-                                        </div>
-                                    </div>
-                                    <div class="duration">
-                                        <span class="header">длительность: </span>10 ч. 28 м.
-                                    </div>
-                                </div>
-                                <div class="history_table_row">
-                                    <div class="course">Общие вопросы охраны труда и функционирования СУОТ</div>
-                                    <div class="status">обучение идет</div>
-                                    <div class="start_at">
-                                        <span class="header">начало обучения: </span>05.10.2022
-                                    </div>
-                                    <!--Если у поля нет значения (в данное случае даты окончани обучения нет),-->
-                                    <!--то для заголовка добавляем класс hidden-->
-                                    <div class="finish_at">
-                                        <span class="header hidden">завершение обучения: </span>
-                                    </div>
-                                    <div class="results">
-                                        <span class="header hidden">результат: </span>
-                                    </div>
-                                    <div class="duration">
-                                        <span class="header">длительность: </span>3 ч. 18 м.
-                                    </div>
-                                </div>
-                                <div class="history_table_row">
-                                    <div class="course">Б2. Нефтяная и газовая промышленность</div>
-                                    <div class="status">обучение начато</div>
-                                    <div class="start_at">
-                                        <span class="header hidden">начало обучения: </span>
-                                    </div>
-                                    <div class="finish_at">
-                                        <span class="header hidden">завершение обучения: </span>
-                                    </div>
-                                    <div class="results">
-                                        <span class="header hidden">результат: </span>
-                                    </div>
-                                    <div class="duration">
-                                        <span class="header hidden">длительность: </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="history_mobile_ajax"
-                             history-elem="ajax-trigger"
-                             data-url="{{ path('app_frontend_preparation_one_next_page') }}"
-                             data-page="2"
-                             data-per-page="4"></div>
-                        <!-- /Элемент для загрузки -->
-                        <div class="history_display">
-                            <div class="history_display_count_wrapper">
-                                <div class="history_display_count_header">отображать по: </div>
-                                <div class="history_display_count">
-                                    <a href="javascript:void(0)" class="history_display_count_item active">20</a>
-                                    <div class="history_display_separator">|</div>
-                                    <a href="javascript:void(0)" class="history_display_count_item">50</a>
-                                    <div class="history_display_separator">|</div>
-                                    <a href="javascript:void(0)" class="history_display_count_item">100</a>
-                                </div>
-                            </div>
-                            <div class="history_display_pages_wrapper">
-                                <!--отображаем если не на 1 транице-->
-                                <!--<a href="javascript:void(0)" class="history_display_pages_item">в начало</a>
-                                <div class="history_display_separator">|</div>-->
-                                <a href="javascript:void(0)" class="history_display_pages_item active">1</a>
-                                <div class="history_display_separator">|</div>
-                                <a href="javascript:void(0)" class="history_display_pages_item">2</a>
-                                <div class="history_display_separator">|</div>
-                                <a href="javascript:void(0)" class="history_display_pages_item">3</a>
-                                <div class="history_display_separator">|</div>
-                                <a href="javascript:void(0)" class="history_display_pages_item">4</a>
-                                <div class="history_display_separator">|</div>
-                                <a href="javascript:void(0)" class="history_display_pages_item">в конец</a>
-                            </div>
-                        </div>
+                  <a
+                    href="javascript:void(0)"
+                    class="history_display_pages_item active"
+                    >1</a
+                  >
+                  <div class="history_display_separator">|</div>
+                  <a
+                    href="javascript:void(0)"
+                    class="history_display_pages_item"
+                    >2</a
+                  >
+                  <div class="history_display_separator">|</div>
+                  <a
+                    href="javascript:void(0)"
+                    class="history_display_pages_item"
+                    >3</a
+                  >
+                  <div class="history_display_separator">|</div>
+                  <a
+                    href="javascript:void(0)"
+                    class="history_display_pages_item"
+                    >4</a
+                  >
+                  <div class="history_display_separator">|</div>
+                  <a
+                    href="javascript:void(0)"
+                    class="history_display_pages_item"
+                    >в конец</a
+                  >
+                </div>
+              </div>
+              <div class="history_table">
+                <div class="history_table_header">
+                  <div class="history_table_row">
+                    <div class="course">Курс</div>
+                    <div class="status">Статус<br />обучения</div>
+                    <div class="status_course">Статус<br />курса</div>
+                    <div class="action_course">Действие<br />курса</div>
+                    <div class="activation_course">Активация <br />курса</div>
+                    <div class="results">
+                      Статус итогового<br />тестирования
                     </div>
+                    <div class="duration">Длительность<br />обучения</div>
+                  </div>
                 </div>
-            </div>
-        </div>
-        <footer class="footer">
-            <div class="footer-content container">
-                <div class="copyright">
-                    <!--Выводим текущий год-->
-                    2024, Система дистанционного обучения «PROобучение»
+                <div class="history_table_content" history-elem="inner">
+                  <div class="history_table_row">
+                    <div class="course">Оказание помощи пострадавшим</div>
+                    <div class="status">обучение завершено</div>
+                    <div class="status_course">истек</div>
+                    <div class="action_course">
+                      <!--Если у поля есть значение (в данное случае дата действия курса),-->
+                      <!--то выводим значения поля-->
+                      <span class="header">действие курса: </span> с 20.09.2022
+                      <br />
+                      по 30.09.2022
+                    </div>
+                    <div class="activation_course">
+                      <span class="header">активация курса: </span>20.09.2022
+                    </div>
+                    <div class="results">
+                      <div class="results_row">
+                        <span class="header">результат: </span>сдано
+                      </div>
+                      <div class="results_row">
+                        <a href="javascript:void(0)" download
+                          >Скачать протокол первой успешной попытки</a
+                        >
+                      </div>
+                      <div class="results_row">
+                        <a href="javascript:void(0)" download
+                          >Скачать протокол крайней попытки</a
+                        >
+                      </div>
+                    </div>
+                    <div class="duration">
+                      <span class="header">длительность: </span>10 ч. 28 м.
+                    </div>
+                  </div>
+                  <div class="history_table_row">
+                    <div class="course">
+                      Общие вопросы охраны труда и функционирования СУОТ
+                    </div>
+                    <div class="status">обучение идет</div>
+                    <div class="status_course">активный</div>
+                    <div class="action_course">
+                      <span class="header">действие курса: </span>с 20.09.2022
+                      <br />
+                      по 30.09.2022
+                    </div>
+                    <!--Если у поля нет значения (в данное случае даты активации курса нет),-->
+                    <!--то для заголовка добавляем класс hidden-->
+                    <div class="activation_course">
+                      <span class="header hidden">активация курса: </span>
+                      05.10.2022
+                    </div>
+                    <div class="results">
+                      <span class="header hidden">результат: </span>Не было
+                      попыток
+                    </div>
+                    <div class="duration">
+                      <span class="header">длительность: </span>3 ч. 18 м.
+                    </div>
+                  </div>
+                  <div class="history_table_row">
+                    <div class="course">
+                      Б2. Нефтяная и газовая промышленность
+                    </div>
+                    <div class="status">обучение начато</div>
+                    <div class="status_course">активный</div>
+                    <div class="action_course">
+                      <span class="header">действие курса: </span>с 20.09.2022
+                      <br />
+                      по 30.09.2022
+                    </div>
+                    <div class="activation_course">
+                      <span class="header">активация курса: </span>05.10.2022
+                    </div>
+                    <div class="results">
+                      <span class="header hidden">результат: </span> Не было
+                      попыток
+                    </div>
+                    <div class="duration">
+                      <span class="header hidden">длительность: </span>3 ч. 18
+                      м.
+                    </div>
+                  </div>
                 </div>
-                <div class="support">Служба поддержки: <a href="tel:+78462691526">+7 (846) 26-915-26 доб. 1103</a></div>
+              </div>
+              <div
+                class="history_mobile_ajax"
+                history-elem="ajax-trigger"
+                data-url="{{ path('app_frontend_preparation_one_next_page') }}"
+                data-page="2"
+                data-per-page="4"
+              ></div>
+              <!-- /Элемент для загрузки -->
+              <div class="history_display">
+                <div class="history_display_count_wrapper">
+                  <div class="history_display_count_header">отображать по:</div>
+                  <div class="history_display_count">
+                    <a
+                      href="javascript:void(0)"
+                      class="history_display_count_item active"
+                      >20</a
+                    >
+                    <div class="history_display_separator">|</div>
+                    <a
+                      href="javascript:void(0)"
+                      class="history_display_count_item"
+                      >50</a
+                    >
+                    <div class="history_display_separator">|</div>
+                    <a
+                      href="javascript:void(0)"
+                      class="history_display_count_item"
+                      >100</a
+                    >
+                  </div>
+                </div>
+                <div class="history_display_pages_wrapper">
+                  <!--отображаем если не на 1 транице-->
+                  <!--<a href="javascript:void(0)" class="history_display_pages_item">в начало</a>
+                                <div class="history_display_separator">|</div>-->
+                  <a
+                    href="javascript:void(0)"
+                    class="history_display_pages_item active"
+                    >1</a
+                  >
+                  <div class="history_display_separator">|</div>
+                  <a
+                    href="javascript:void(0)"
+                    class="history_display_pages_item"
+                    >2</a
+                  >
+                  <div class="history_display_separator">|</div>
+                  <a
+                    href="javascript:void(0)"
+                    class="history_display_pages_item"
+                    >3</a
+                  >
+                  <div class="history_display_separator">|</div>
+                  <a
+                    href="javascript:void(0)"
+                    class="history_display_pages_item"
+                    >4</a
+                  >
+                  <div class="history_display_separator">|</div>
+                  <a
+                    href="javascript:void(0)"
+                    class="history_display_pages_item"
+                    >в конец</a
+                  >
+                </div>
+              </div>
             </div>
-        </footer>
-        <div class="overlay" popup-element="overlay">
+          </div>
         </div>
+      </div>
+      <footer class="footer">
+        <div class="footer-content container">
+          <div class="copyright">
+            <!--Выводим текущий год-->
+            2024, Система дистанционного обучения «PROобучение»
+          </div>
+          <div class="support">
+            Служба поддержки:
+            <a href="tel:+78462691526">+7 (846) 26-915-26 доб. 1103</a>
+          </div>
+        </div>
+      </footer>
+      <div class="overlay" popup-element="overlay"></div>
     </div>
     <script src="js/scripts.js"></script>
     <script src="js/history.js"></script>
-</body>
+  </body>
 </html>

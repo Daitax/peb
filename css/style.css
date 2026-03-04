@@ -1442,7 +1442,7 @@ img {
 }
 
 .course {
-  flex: 0 0 23%;
+  flex: 0 0 17%;
   padding-right: 7px;
 }
 
@@ -1451,15 +1451,19 @@ img {
   padding-left: 7px;
   padding-right: 7px;
 }
-
-.start_at {
-  flex: 0 0 14%;
+.status_course {
+  flex: 0 0 7%;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.action_course {
+  flex: 0 0 10%;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.finish_at {
-  flex: 0 0 14%;
+.activation_course {
+  flex: 0 0 10%;
   padding-left: 7px;
   padding-right: 7px;
 }
