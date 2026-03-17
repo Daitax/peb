@@ -308,6 +308,77 @@ let supportSubmitButton = document.querySelector(
   '[support-form-elem="submit"]',
 );
 
+// Логика для проверки размера файлов при загрузки в поддержку и отображения ошибки, если размер превышает 10 МБ
+
+let validationPassed = true;
+
+const fileInput = document.querySelector('input[type="file"][name="files[]"]');
+if (fileInput) {
+  const fileUploadText = document.querySelector(".file_upload_text");
+  const fileErrorElement = document.querySelector(".support_form_file_error");
+  const config = {
+    allowedExtensions: [
+      ".jpg",
+      ".jpeg",
+      ".png",
+      ".webp",
+      ".pdf",
+      ".doc",
+      ".docx",
+      ".xls",
+      ".xlsx",
+      ".txt",
+      ".mp4",
+      ".mov",
+      ".avi",
+    ],
+    maxSize: 10 * 1024 * 1024, // 10 МБ
+    maxFiles: 10, // Максимум 10 файлов
+  };
+
+  fileInput.addEventListener("change", function (e) {
+    const files = e.target.files;
+
+    let totalSize = 0;
+    if (files.length === 0) {
+      fileUploadText.textContent = "Добавить файл";
+    } else {
+      fileUploadText.textContent = `${files.length} файл(ов) выбрано`;
+    }
+    fileErrorElement.classList.remove("show");
+    if (files.length === 0) return validationPassed;
+    if (files.length > config.maxFiles) {
+      fileErrorElement.classList.add("show");
+      fileErrorElement.innerText = `Превышено максимальное количество файлов (максимум: ${config.maxFiles})`;
+      validationPassed = false;
+      return validationPassed;
+    }
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const extension = "." + file.name.split(".").pop().toLowerCase();
+
+      // Проверка расширения
+      if (!config.allowedExtensions.includes(extension)) {
+        fileErrorElement.classList.add("show");
+        fileErrorElement.innerText = `Недопустимый формат файла: ${file.name}`;
+        validationPassed = false;
+        return validationPassed;
+      }
+      // Добавляем размер файла к общему размеру
+      totalSize += file.size;
+    }
+    if (totalSize > config.maxTotalSize) {
+      const totalSizeMB = (totalSize / 1024 / 1024).toFixed(2);
+      fileErrorElement.classList.add("show");
+      fileErrorElement.innerText = `Превышен максимальный общий размер файлов (максимум: ${config.maxSize / 1024 / 1024} МБ, текущий размер: ${totalSizeMB} МБ)`;
+      validationPassed = false;
+      return validationPassed;
+    }
+    return validationPassed;
+  });
+}
+
 if (supportSubmitButton) {
   supportSubmitButton.addEventListener("click", function (event) {
     let form = this.closest("form");
@@ -330,7 +401,7 @@ if (supportSubmitButton) {
         }
       });
 
-    if (!isError) {
+    if (!isError && validationPassed) {
       let supportUrl = document
         .querySelector('[support-form-elem="submit"]')
         .getAttribute("support-url");
@@ -397,15 +468,15 @@ if (surveySubmitButton) {
         body: new FormData(form),
       })
         .then(async (res) => {
-          const contentType = res.headers.get('content-type')
+          const contentType = res.headers.get("content-type");
 
           if (res.ok) {
-            if (contentType && contentType.includes('application/json')) {
-              const data = await res.json()
+            if (contentType && contentType.includes("multipart/form-data")) {
+              const data = await res.json();
               if (data) {
-                openPopup()
+                openPopup();
               } else {
-                errorField.innerText = "Ваш ответ уже учтен. Спасибо"
+                errorField.innerText = "Ваш ответ уже учтен. Спасибо";
               }
             }
           } else {
@@ -413,9 +484,9 @@ if (surveySubmitButton) {
           }
         })
         .catch((error) => {
-          console.error('Ошибка:', error);
+          console.error("Ошибка:", error);
           alert("Ошибка отправки сообщения");
-        })
+        });
     }
   });
 }
@@ -472,7 +543,9 @@ if (timer) {
   // по умолчанию кнопка "ответить" неактивна, это сделано для того, чтобы пользователь не мог пропустить вопрос, не выбрав ответ на последнем вопросе, потому что на последнем вопросе кнопка "ответить" очищает таймер из локалсторадж
   answeredButton.disabled = true;
 
-  const radioInputs = document.querySelectorAll(".test_form_radio, .test_form_checkbox");
+  const radioInputs = document.querySelectorAll(
+    ".test_form_radio, .test_form_checkbox",
+  );
   radioInputs.forEach((input) => {
     input.addEventListener("change", () => {
       // при выборе любого ответа активируем кнопку "ответить"
