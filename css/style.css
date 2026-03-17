@@ -1543,6 +1543,47 @@ img {
 .support_form_label.error .support_form_input {
   border-bottom-color: #e05457;
 }
+.support_form_file_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.file_upload_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 307px;
+  height: 60px;
+  color: #74a2b4;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px dashed #74a2b4;
+}
+.support_form_file_error {
+  /* position: absolute;
+  top: 50%;
+  left: 60%; */
+  font-size: 11px;
+  /* transform: translateY(-50%); */
+  transition: 0.6s;
+  width: calc(100% - 307px - 10px);
+  opacity: 0;
+  color: red;
+}
+.support_form_file_error.show {
+  opacity: 1;
+}
+
+.file_upload_btn:hover {
+  border-style: solid;
+}
+
+.file_upload_btn input {
+  display: none;
+}
 
 .support_form_error {
   position: absolute;

@@ -237,6 +237,15 @@
                                 <input type="text" name="question" class="support_form_input" form-elem="input-text">
                                 <div class="support_form_error" form-elem="input-error"></div>
                             </label>
+                            <div class="support_form_file_container">
+                                <label class="file_upload_btn">
+                                    <span class="file_upload_text">Добавить файл</span>
+                                    <input type="file" name="files[]" multiple accept=".jpg, .jpeg, .png, .webp, .pdf, .doc, .docx, .xls, .xlsx, .txt,.mp4, .mov, .avi"/>
+                                </label>
+                                <div class="support_form_file_error" form-elem="file-error">
+                                    Общий размер файлов не должен превышать 10 МБ. Пожалуйста, уменьшите размер или количество файлов
+                                </div>
+                            </div>
                             <div class="support_agree">
                                 Нажимая кнопку "Отправить сообщение" вы соглашаетесь с условиями <a href="javascript:void(0)">политики конфиденциальности</a>
                             </div>
