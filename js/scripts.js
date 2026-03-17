@@ -471,7 +471,7 @@ if (surveySubmitButton) {
           const contentType = res.headers.get("content-type");
 
           if (res.ok) {
-            if (contentType && contentType.includes("application/json")) {
+            if (contentType && contentType.includes("multipart/form-data")) {
               const data = await res.json();
               if (data) {
                 openPopup();
