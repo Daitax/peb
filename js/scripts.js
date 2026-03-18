@@ -338,7 +338,7 @@ if (fileInput) {
 
   fileInput.addEventListener("change", function (e) {
     const files = e.target.files;
-
+    validationPassed = true;
     let totalSize = 0;
     if (files.length === 0) {
       fileUploadText.textContent = "Добавить файл";
@@ -375,6 +375,7 @@ if (fileInput) {
       validationPassed = false;
       return validationPassed;
     }
+
     return validationPassed;
   });
 }
