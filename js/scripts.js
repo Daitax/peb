@@ -1,12 +1,13 @@
 function openPopup(otherSelector = false) {
   let overlay = document.querySelector('[popup-element="overlay"]');
   let popup = "";
+  console.log(otherSelector);
   if (otherSelector) {
     popup = document.querySelector(`[popup-element="popup"]${otherSelector}`);
   } else {
     popup = document.querySelector('[popup-element="popup"]');
   }
-
+  
   overlay.classList.add("show");
   setTimeout(function () {
     popup.classList.add("show");
@@ -232,7 +233,9 @@ if (forms.length > 0) {
 let openPopupButton = document.querySelector('[element-action="open-popup"]');
 
 if (openPopupButton) {
-  openPopupButton.addEventListener("click", openPopup);
+  openPopupButton.addEventListener("click", function () {
+    openPopup();
+  });
 }
 
 let openPopupSaveHistory = document.querySelector(
