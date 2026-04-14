@@ -784,12 +784,12 @@ img {
   transform: rotate(45deg);
 }
 
-.modules_item_check[status="passed"] {
+.modules_item[module-status="passed"] .modules_item_check {
   border-color: #e05457;
 }
 
-.modules_item_check[status="passed"]:before,
-.modules_item_check[status="passed"]:after {
+.modules_item[module-status="passed"] .modules_item_check:before,
+.modules_item[module-status="passed"] .modules_item_check:after {
   background: #e05457;
 }
 

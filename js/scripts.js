@@ -1,7 +1,7 @@
 function openPopup(otherSelector = false) {
   let overlay = document.querySelector('[popup-element="overlay"]');
   let popup = "";
-  console.log(otherSelector);
+
   if (otherSelector) {
     popup = document.querySelector(`[popup-element="popup"]${otherSelector}`);
   } else {
@@ -272,9 +272,30 @@ if (mainMenu) {
 let finalTestingLink = document.querySelector('[content-elem="final-testing"]');
 
 if (finalTestingLink) {
-  if (finalTestingLink.getAttribute("status") == "not-passed") {
-    finalTestingLink.addEventListener("click", openPopup);
-  }
+  finalTestingLink.addEventListener("click", function(event) {
+    let shouldOpenPopup = false;
+
+    const currentItem = this.closest('[module-elem="item"]');
+    const container = this.closest('[module-elem="container"]');
+
+    if (!container || !currentItem) return;
+
+    const allModules = container.querySelectorAll('[module-elem="item"]');
+
+    for (let module of allModules) {
+      if (module === currentItem) break;
+      
+      if (module.getAttribute('module-status') === 'not-passed') {
+        shouldOpenPopup = true;
+        break;
+      }
+    }
+
+    if (shouldOpenPopup) {
+        event.preventDefault();
+        openPopup();
+    }
+  });
 }
 
 let faqItems = document.querySelectorAll('[faq-elem="item"]');
