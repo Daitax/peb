@@ -208,8 +208,9 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="modules">
-                            <div class="modules_item">
+                        <div class="modules" module-elem="container">
+                            <!--Выполненые отмечаем status="passed"-->
+                            <div class="modules_item" module-status="passed">
                                 <div class="modules_item_check"></div>
                                 <div class="modules_item_composition">
                                     <a href="control_questions.html" class="modules_item_name" status="not-passed">Подготовка к аттестации</a>
@@ -224,7 +225,7 @@
                                     <a href="control_questions.html" class="modules_item_name">Избранное</a>
                                 </div>
                             </div>
-                            <div class="modules_item">
+                            <div class="modules_item" module-status="not-passed">
                                 <div class="modules_item_check"></div>
                                 <div class="modules_item_composition">
                                     <!--Если промежуточные тесты не пройдены, то при клике открываем попап-->
