@@ -1593,16 +1593,57 @@ img {
   color: #e05457;
 }
 
-.support_agree {
+.support_form_label_custom_checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+
+.support_form_label_input_checkbox {
+  display: none;
+}
+
+.support_form_label_input_custom_checkbox {
+  flex: 0 0 25px;
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #c8d6dc;
+}
+
+.support_form_label_input_checkbox:checked ~ .support_form_label_input_custom_checkbox:before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 19px;
+  height: 19px;
+  background: #20478a;
+}
+
+.support_form_label_custom_checkbox_text {
+  font-size: 12px;
+  color: #828282;
+  margin-left: 15px;
+}
+
+.support_form_privacy-politicy {
   font-size: 12px;
   color: #828282;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.support_agree a {
+.support_form_privacy-politicy a {
   font-size: 12px;
   color: #828282;
   text-decoration: underline;
+}
+
+.support_form_privacy-politicy a:hover {
+  color: #1f5a8d;
 }
 
 .support_submit_wrapper {

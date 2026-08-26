@@ -426,6 +426,22 @@ if (supportSubmitButton) {
         }
       });
 
+    let consentCheckbox = form.querySelector(
+      '[form-elem="input-checkbox"]',
+    );
+
+    if (consentCheckbox && !consentCheckbox.checked) {
+      isError = true;
+
+      let consentLabel = consentCheckbox.closest('[form-elem="label"]');
+
+      consentLabel.querySelector(
+        '[form-elem="input-error"]',
+      ).innerText = "Необходимо согласие";
+
+      consentLabel.classList.add("error");
+    }
+
     if (!isError && validationPassed) {
       let supportUrl = document
         .querySelector('[support-form-elem="submit"]')

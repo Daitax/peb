@@ -246,9 +246,13 @@
                                     Общий размер файлов не должен превышать 10 МБ. Пожалуйста, уменьшите размер или количество файлов
                                 </div>
                             </div>
-                            <div class="support_agree">
-                                Нажимая кнопку "Отправить сообщение" вы соглашаетесь с условиями <a href="javascript:void(0)">политики конфиденциальности</a>
-                            </div>
+
+                            <label class="support_form_label_custom_checkbox" form-elem="label">
+                                <input type="checkbox" class="support_form_label_input_checkbox" name="agree" value="agree" form-elem="input-checkbox" required>
+                                <div class="support_form_label_input_custom_checkbox"></div>
+                                <div class="support_form_label_custom_checkbox_text">Я согласен на обработку персональных данных и принимаю условия в соответствии с <a href="javascript:void(0)" target="_blank">Политикой конфиденциальности</a></div>
+                                <div class="support_form_error" form-elem="input-error"></div>
+                            </label>
                             <div class="support_submit_wrapper">
                                 <button class="support_submit red_button" type="button" support-form-elem="submit">Отправить сообщение</button>
                             </div>
