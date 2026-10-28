@@ -25,6 +25,18 @@
     width: 100%;
   }
 
+  .programs_block_header {
+    font-size: 20px
+  }
+
+  .programs_block_header span {
+    font-size: 14px
+  }
+
+  .programs_item_header {
+    font-size: 16px;
+  }
+
   .express-test_description {
     width: 100%;
   }
@@ -120,6 +132,10 @@
 }
 
 @media screen and (max-width: 992px) {
+  h1 {
+    font-size: 30px;
+  }
+
   .header_logo {
     flex: 0 0 45%;
   }
@@ -136,6 +152,19 @@
   .demo-programs_item:nth-child(2n) {
     margin-left: 10%;
   }
+
+  .modules_item_name {
+    font-size: 20px;
+  }
+
+  .programs_block_header {
+    flex-wrap: wrap;
+  }
+
+  .programs_block_header span {
+    margin-left: 0;
+  }
+
 
   .programs_item {
     flex: 0 0 45%;

@@ -240,8 +240,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="modules_item" module-elem="item" module-status="not-passed">
-                                <div class="modules_item_check"></div>
+                            <div class="modules_item testing" module-elem="item" module-status="not-passed">
+                                <div class="modules_item_testing_check"></div>
+                                <div class="modules_item_composition">
+                                    <!--Если промежуточные тесты не пройдены, то при клике открываем попап-->
+                                    <a href="express_test.html" class="modules_item_name" content-elem="final-testing">Итоговое тестирование</a>
+                                </div>
+                            </div>
+                            <div class="modules_item testing" module-elem="item" module-status="passed">
+                                <div class="modules_item_testing_check"></div>
                                 <div class="modules_item_composition">
                                     <!--Если промежуточные тесты не пройдены, то при клике открываем попап-->
                                     <a href="express_test.html" class="modules_item_name" content-elem="final-testing">Итоговое тестирование</a>
